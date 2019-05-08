@@ -5,8 +5,8 @@
         <b-col cols="5">
           <b-card class="p-3">
             <h3 class="mb-4">Log In</h3>
-            <b-form @submit="onSubmit" v-if="show">
-              <b-form-group id="exampleInputGroup1"
+            <b-form @submit="login" v-if="show">
+              <b-form-group align="left" id="exampleInputGroup1"
                             label="Email address:"
                             label-for="exampleInput1"
               >
@@ -17,7 +17,7 @@
                               placeholder="Enter email">
                 </b-form-input>
               </b-form-group>
-              <b-form-group id="exampleInputGroup2"
+              <b-form-group align="left" id="exampleInputGroup2"
                             label="Password:"
                             label-for="exampleInput2">
                 <b-form-input id="exampleInput2"
@@ -60,7 +60,7 @@ export default {
     }
   },
   methods: {
-    onSubmit (evt) {
+    login (evt) {
       evt.preventDefault()
       alert(JSON.stringify(this.form))
     }
