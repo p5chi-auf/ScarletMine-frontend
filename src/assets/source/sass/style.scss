@@ -2,3 +2,13 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import '~bootstrap-vue/src/index.scss';
 @import 'components/custom-variables';
+
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+body {
+  background: #EEF1F4 !important;
+  font-family: 'Lato', sans-serif !important;
+}
+.nav-background {
+  background: #353535;
+}
+
