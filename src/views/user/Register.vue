@@ -10,8 +10,7 @@
                   id="input-group-1"
                   label="Email address:"
                   label-for="input-1"
-                  description="We'll never share your email with anyone else."
-                >
+                                 >
                   <b-form-input
                     id="input-1"
                   v-model="form.email"
@@ -35,9 +34,13 @@
                 <b-input type="password" id="text-password" aria-describedby="password-help-block"
                          placeholder="Enter password" v-model="form.newPassword"></b-input>
                 <b-form-text id="password-help-block">
-                  Your password must be 8-20 characters long, contain letters and numbers, and must not
-                  contain spaces, special characters, or emoji.
+                  We'll never share your email with anyone else.
                 </b-form-text> &nbsp;
+                <div>
+                </div>
+                <b-input type="password" id="confirm-password" aria-describedby="password-help-block"
+                         placeholder="Confirm password" v-model="form.confirmPassword" ></b-input>
+
               </b-form-group>
               <b-button type="submit" variant="primary">Submit</b-button>&nbsp;
               <b-button type="reset" variant="danger">Reset</b-button>
@@ -59,7 +62,8 @@ export default {
       form: {
         email: '',
         fullName: '',
-        newPassword: ''
+        newPassword: '',
+        confirmPassword: ''
       },
       show: true,
       error: ''
@@ -67,25 +71,31 @@ export default {
   },
   methods: {
     register (evt) {
-      // alert(JSON.stringify(this.form))
+      const url = 'https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR'
+      this.axios.get(url).then(response => {
+        console.log(response.data)
+        this.results = response.data
+      })
+      alert(JSON.stringify(this.form))
       userService.register(this.form)
         .then((response) => {
           console.log(response)
-        }).catch((error) => {
-          this.error = 'A aparut o eroare'
         })
-    },
-    onReset (evt) {
-      evt.preventDefault()
-      // Reset our form values
-      this.form.email = ''
-      this.form.name = ''
-      // Trick to reset/clear native browser form validation state
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
+        // .catch((error) => {
+        //   this.error = 'A aparut o eroare'
     }
+  },
+  onReset (evt) {
+    evt.preventDefault()
+    // Reset our form values
+    this.form.email = ''
+    this.form.name = ''
+    // Trick to reset/clear native browser form validation state
+    this.show = false
+    this.$nextTick(() => {
+      this.show = true
+    })
   }
 }
+// }
 </script>
