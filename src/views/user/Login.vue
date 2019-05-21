@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <b-container>
       <b-row align-h="center" class="mt-5">
         <b-col cols="5">
@@ -35,7 +35,7 @@
               <div class="d-flex justify-content-between">
                 <div>
                   <b-button type="submit" variant="primary">Log In</b-button>&nbsp;
-                  <a href="#" >Register</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="/register" >Register</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="#" >Forgot Password!</a>
                 </div>
               </div>
