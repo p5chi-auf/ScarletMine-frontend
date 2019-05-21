@@ -1,8 +1,9 @@
+
 <template>
   <div>
     <b-container>
       <b-row align-h="center" class="mt-5">
-        <b-col cols="5">
+        <b-col cols="3">
           <b-card class="p-3">
             <h3 class="mb-4">Register</h3>
             <b-form @submit="register" @reset="onReset" v-if="show" @submit.stop.prevent>
@@ -10,7 +11,6 @@
                             id="input-group-1"
                             label="Email address:"
                             label-for="input-1"
-                            description="We'll never share your email with anyone else."
               >
                 <b-form-input
                   id="input-1"
@@ -35,9 +35,7 @@
                 <b-input type="password" id="text-password" aria-describedby="password-help-block"
                          placeholder="Enter password" v-model="form.newPassword"></b-input>
                 <b-form-text id="password-help-block">
-                  Your password must be 8-20 characters long, contain letters and numbers, and must not
-                  contain spaces, special characters, or emoji.
-                </b-form-text> &nbsp;
+                                </b-form-text> &nbsp;
               </b-form-group>
               <b-button type="submit" variant="primary">Submit</b-button>&nbsp;
               <b-button type="reset" variant="danger">Reset</b-button>
