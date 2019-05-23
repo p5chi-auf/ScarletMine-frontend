@@ -19,13 +19,39 @@ export default new Router({
       component: () => import('./views/user/Login.vue')
     },
     {
+      path: '/logged',
+      name: 'logged',
+      component: () => import('./views/Logged.vue')
+    },
+    {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/user/Login.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('./views/user/Register.vue')
+
     }
 
   ]
 })
+
+// Router.beforeEach((to, from, next) => {
+//   // redirect to login page if not logged in and trying to access a restricted page
+//   const publicPages = ['/login']
+//   const authRequired = !publicPages.includes(to.path)
+//   const loggedIn = localStorage.getItem('user')
+//
+//   if (authRequired && !loggedIn) {
+//     return next('/login')
+//   }
+//
+//   next()
+// })

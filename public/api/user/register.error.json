@@ -1,0 +1,18 @@
+{
+  "success": false,
+  "errors": [
+    {
+      "field": "email",
+      "messages": [
+        "Email is required",
+        "Must be a valid email"
+      ]
+    },
+    {
+      "field": "name",
+      "messages": [
+        "Name is required"
+      ]
+    }
+  ]
+}

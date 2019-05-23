@@ -5,7 +5,7 @@
         <b-col cols="5">
           <b-card class="p-3">
             <h3 class="mb-4">Log In</h3>
-            <b-form @submit="login" v-if="show">
+            <b-form @submit.prevent="login" v-if="show" :novalidate="false">
               <b-form-group align="left" id="exampleInputGroup1"
                             label="Email address:"
                             label-for="exampleInput1"
@@ -13,7 +13,6 @@
                 <b-form-input id="exampleInput1"
                               type="email"
                               v-model="form.email"
-                              required
                               placeholder="Enter email">
                 </b-form-input>
               </b-form-group>
@@ -23,7 +22,6 @@
                 <b-form-input id="exampleInput2"
                               type="password"
                               v-model="form.password"
-                              required
                               placeholder="Enter password">
                 </b-form-input>
               </b-form-group>
@@ -48,6 +46,8 @@
 </template>
 
 <script>
+import AuthService from '../../services/AuthService'
+const authService = new AuthService()
 export default {
   data () {
     return {
@@ -60,9 +60,8 @@ export default {
     }
   },
   methods: {
-    login (evt) {
-      evt.preventDefault()
-      alert(JSON.stringify(this.form))
+    login () {
+      authService.login(this.form.email, this.form.password)
     }
   }
 }
