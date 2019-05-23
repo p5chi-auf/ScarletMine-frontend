@@ -13,7 +13,10 @@
                 <b-form-input id="exampleInput1"
                               type="email"
                               v-model="form.email"
-                              placeholder="Enter email">
+                              placeholder="Enter email"
+                              name="form.email"
+                              v-validate="{ required: true, email: true }"
+                              :state="validateState('form.email')">
                 </b-form-input>
               </b-form-group>
               <b-form-group align="left" id="exampleInputGroup2"
@@ -22,7 +25,10 @@
                 <b-form-input id="exampleInput2"
                               type="password"
                               v-model="form.password"
-                              placeholder="Enter password">
+                              placeholder="Enter password"
+                              name="form.Password"
+                              v-validate="{ required: true, min: 6 }"
+                              :state="validateState('form.Password')">
                 </b-form-input>
               </b-form-group>
               <b-form-group id="exampleGroup4">
@@ -30,11 +36,18 @@
                   <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
                 </b-form-checkbox-group>
               </b-form-group>
+              <div class="alert-danger" v-if="apiErrors.length">
+                <div v-for="error in apiErrors" :key="error">
+                  {{ error }}
+                </div>
+              </div>
               <div class="d-flex justify-content-between">
                 <div>
-                  <b-button type="submit" variant="primary">Log In</b-button>&nbsp;
-                  <a href="/register" >Register</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="#" >Forgot Password!</a>
+                  <b-button type="submit" variant="primary" :disabled="errors.any()">Log In</b-button>&nbsp;
+                  <a href="/register">Register</a>
+                </div>
+                <div>
+                  <a href="#">Forgot Password!</a>
                 </div>
               </div>
             </b-form>
@@ -56,12 +69,26 @@ export default {
         password: '',
         checked: []
       },
+      apiErrors: [],
       show: true
     }
   },
   methods: {
-    login () {
-      authService.login(this.form.email, this.form.password)
+    login (evt) {
+      authService.login(this.form, 'error')
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((error) => {
+          console.log(error.message)
+          this.apiErrors = [error.message]
+        })
+    },
+    validateState (ref) {
+      if (this.veeFields[ref] && (this.veeFields[ref].dirty || this.veeFields[ref].validated)) {
+        return !this.errors.has(ref) ? null : false
+      }
+      return null
     }
   }
 }

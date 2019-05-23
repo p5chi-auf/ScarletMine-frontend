@@ -21,7 +21,7 @@ export default new Router({
     {
       path: '/logged',
       name: 'logged',
-      component: () => import('./views/Logged.vue')
+      component: () => import('./views/user/Logged.vue')
     },
     {
       path: '/about',
