@@ -1,8 +1,7 @@
-import axios from 'axios'
-import apiService from '../services/ApiService'
+import apiService from './ApiService'
 export default class UserService {
   register (userData, type) {
-    const response = axios.post(`${apiService.getApiUrl()}/user/register.${type}.json`, userData)
+    const response = apiService.axios().post(`${apiService.getApiUrl()}/user/register.${type}.json`, userData)
     return response.then((response) => {
       return new Promise((resolve, reject) => {
         if (response.success) {
@@ -12,5 +11,9 @@ export default class UserService {
         }
       })
     })
+  }
+
+  getAll () {
+
   }
 }
