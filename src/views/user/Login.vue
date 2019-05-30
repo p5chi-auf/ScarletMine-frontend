@@ -2,22 +2,25 @@
   <div class="login">
     <b-container>
       <b-row align-h="center" class="mt-5">
-        <b-col cols="5">
+        <b-col cols="12" md="6">
           <b-card class="p-3">
             <h3 class="mb-4">Log In</h3>
-            <b-form @submit.prevent="login" v-if="show" :novalidate="false">
+            <b-form @submit.prevent="login" v-if="show" :novalidate="true">
               <b-form-group align="left" id="exampleInputGroup1"
-                            label="Email address:"
+                            label="Username:"
                             label-for="exampleInput1"
               >
                 <b-form-input id="exampleInput1"
-                              type="email"
-                              v-model="form.email"
-                              placeholder="Enter email"
-                              name="form.email"
-                              v-validate="{ required: true, email: true }"
-                              :state="validateState('form.email')">
+                              type="text"
+                              v-model="form.username"
+                              placeholder="Enter username"
+                              name="form.username"
+                              v-validate="{ required: true }"
+                              :state="validateState('form.username')">
                 </b-form-input>
+                <b-form-invalid-feedback id="exampleInput1-live-feedback">
+                  Username request!
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group align="left" id="exampleInputGroup2"
                             label="Password:"
@@ -27,9 +30,12 @@
                               v-model="form.password"
                               placeholder="Enter password"
                               name="form.Password"
-                              v-validate="{ required: true, min: 6 }"
+                              v-validate="{ required: true }"
                               :state="validateState('form.Password')">
                 </b-form-input>
+                <b-form-invalid-feedback id="exampleInput2-live-feedback">
+                  Password request!
+                </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group id="exampleGroup4">
                 <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
@@ -65,7 +71,7 @@ export default {
   data () {
     return {
       form: {
-        email: '',
+        username: '',
         password: '',
         checked: []
       },
@@ -74,13 +80,12 @@ export default {
     }
   },
   methods: {
-    login (evt) {
+    login () {
       authService.login(this.form, 'error')
-        .then((response) => {
-          console.log(response)
+        .then(() => {
+          location.href = '/'
         })
         .catch((error) => {
-          console.log(error.message)
           this.apiErrors = [error.message]
         })
     },
@@ -92,4 +97,5 @@ export default {
     }
   }
 }
+
 </script>

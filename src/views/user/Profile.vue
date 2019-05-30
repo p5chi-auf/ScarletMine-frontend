@@ -1,7 +1,7 @@
 <template>
   <div id="logged">
     <div>
-      <b-navbar toggleable="lg" type="dark" variant="info">
+      <b-navbar toggleable="lg" type="dark" variant="dark">
         <router-link to="/"><i class="fas fa-home fa-lg"></i></router-link>&emsp;
         <b-navbar-brand href="#">LOGO</b-navbar-brand>
 
@@ -25,10 +25,7 @@
 </template>
 
 <style>
-  i{
-    color:white;
-  }
-  body{
-    background-image: "./components/background.jpg";
+  i {
+    color: white;
   }
 </style>

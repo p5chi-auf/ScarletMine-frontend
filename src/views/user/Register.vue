@@ -2,25 +2,25 @@
   <div>
     <b-container>
       <b-row align-h="center" class="mt-5">
-        <b-col cols="5">
+        <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
             <h3 class="mb-4 text-center">Register</h3>
             <b-form @submit.stop.prevent="register" :novalidate="true">
               <b-form-group id="input-group-1"
-                            label="Email address:"
+                            label="Username:"
                             label-for="input-1"
               >
                 <b-form-input
                   id="input-1"
-                  v-model="form.email"
-                  type="email"
-                  placeholder="Enter email"
-                  name="form.email"
-                  v-validate="{ required: true, email: true }"
-                  :state="validateState('form.email')"
+                  v-model="form.username"
+                  type="text"
+                  placeholder="Enter username"
+                  name="form.username"
+                  v-validate="{ required: true, username: true }"
+                  :state="validateState('form.username')"
                 ></b-form-input>
                 <b-form-invalid-feedback id="input-1-live-feedback">
-                  It doesn't look like an email address ...
+                  Please, enter an username!
                 </b-form-invalid-feedback>
               </b-form-group>
 
@@ -35,7 +35,7 @@
                   placeholder="Enter name"
                 ></b-form-input>
                 <b-form-invalid-feedback id="input-2-live-feedback">
-                  This is a required field and must be at least 3 characters
+                  This is a required field and must be at least 3 characters!
                 </b-form-invalid-feedback>
               </b-form-group>
 
@@ -46,7 +46,7 @@
                          v-validate="{ required: true, min: 8 }"
                          :state="validateState('form.newPassword')"></b-input>
                 <b-form-invalid-feedback id="input-3-live-feedback">
-                  This is a required field and must be at least 8 characters
+                  This is a required field and must be at least 8 characters!
                 </b-form-invalid-feedback>
                 <b-form-text id="password-help-block"></b-form-text> &nbsp;
               </b-form-group>
@@ -74,7 +74,7 @@ export default {
   data () {
     return {
       form: {
-        email: '',
+        username: '',
         name: '',
         newPassword: ''
       },
