@@ -83,7 +83,7 @@ export default {
     login () {
       authService.login(this.form, 'error')
         .then(() => {
-          location.href = '/'
+          location.href = '/profile'
         })
         .catch((error) => {
           this.apiErrors = [error.message]
