@@ -4,7 +4,10 @@
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
-            <h3 class="mb-4 text-center">Register</h3>
+            <h2 class="mb-4 text-center">Create account</h2>
+            <div style="text-align:center">
+            <a href="/login">or sign in to your account</a>
+            </div>
             <b-form @submit.stop.prevent="register" :novalidate="true">
               <b-form-group id="input-group-1"
                             label="Username:"

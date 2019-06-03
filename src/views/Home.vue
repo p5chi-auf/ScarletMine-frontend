@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="text-align:center">
     <h1>Hi {{user.firstName}}!</h1>
     <p>You're logged in with Vue + Vuex & JWT!!</p>
     <h3>Users from secure api end point:</h3>
@@ -11,7 +11,6 @@
       </li>
     </ul>
     <p>
-      <router-link to="/login">Logout</router-link>
     </p>
   </div>
 </template>
