@@ -45,6 +45,11 @@ const router = new Router({
       meta: {
         requiresVisitor: true
       }
+    },
+    {
+      path: '/users',
+      name: 'users',
+      component: () => import(/* webpackChunkName: "about" */ './views/admin/Users.vue')
     }
   ]
 })
