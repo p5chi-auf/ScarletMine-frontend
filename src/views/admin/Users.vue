@@ -1,5 +1,10 @@
 <template>
   <b-container fluid>
+
+    <div class="list-of-accounts">
+      <a href="/users/add">Add an account</a>
+    </div>
+
     <b-table
       striped-hover
       outlined
@@ -15,6 +20,7 @@
 
       <template slot="actions">
         <div class="table-actions">
+         <span class="action"><i class="far fa-eye"></i></span>
          <span class="action"><i class="fas fa-edit"></i></span>
          <span class="action text-danger"><i class="fas fa-trash"></i></span>
         </div>
