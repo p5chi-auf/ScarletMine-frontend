@@ -1,5 +1,10 @@
 <template>
   <b-container fluid>
+
+    <div class="list-of-accounts">
+      <b-button squared href="/users/add"><i class="fas fa-plus"></i>Add User</b-button>
+    </div>
+
     <b-table
       striped-hover
       outlined
@@ -15,6 +20,7 @@
 
       <template slot="actions">
         <div class="table-actions">
+         <span class="action"><i class="far fa-eye"></i></span>
          <span class="action"><i class="fas fa-edit"></i></span>
          <span class="action text-danger"><i class="fas fa-trash"></i></span>
         </div>
@@ -35,14 +41,6 @@ export default {
         { key: 'username', label: 'Username' },
         { key: 'roles', label: 'Role' },
         { key: 'actions', label: 'Actions' }
-      ],
-      items: [
-        {
-          id: 1,
-          fullName: 'Dickerson',
-          username: 'Macdonald',
-          roles: ['ROLE_ADMIN', 'ROLE_USER']
-        }
       ]
     }
   },

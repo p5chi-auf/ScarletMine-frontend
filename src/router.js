@@ -50,6 +50,11 @@ const router = new Router({
       path: '/users',
       name: 'users',
       component: () => import(/* webpackChunkName: "about" */ './views/admin/Users.vue')
+    },
+    {
+      path: '/users/add',
+      name: 'users-add',
+      component: () => import(/* webpackChunkName: "about" */ './views/admin/UserAdd.vue')
     }
   ]
 })

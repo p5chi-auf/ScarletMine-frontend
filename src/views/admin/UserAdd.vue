@@ -4,10 +4,7 @@
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
-            <h2 class="mb-4 text-center">Create account</h2>
-            <div style="text-align:center">
-            <a href="/login">or sign in to your account</a>
-            </div>
+            <h2 class="mb-4 text-center">Add new user account</h2>
             <b-form @submit.stop.prevent="register" :novalidate="true">
               <b-form-group id="input-group-1"
                             label="Username:"
@@ -22,7 +19,6 @@
                   v-validate="{ required: true, email: true }"
                   :state="validateState('username')"
                 ></b-form-input>
-
                 <b-form-invalid-feedback id="input-1-live-feedback">
                   <ul>
                     <li v-for="error in errors.collect('username')">{{ error }}</li>
@@ -35,7 +31,7 @@
                   id="input-2"
                   v-model="form.fullName"
                   name="full name"
-                  v-validate="{ required: true, min: 3 }"
+                  v-validate="{ required: true }"
                   :state="validateState('full name')"
                   aria-describedby="input-2-live-feedback"
                   placeholder="Enter name"
@@ -60,13 +56,19 @@
                 </b-form-invalid-feedback>
                 <b-form-text id="password-help-block"></b-form-text> &nbsp;
               </b-form-group>
+              <b-form-group id="input-group-4" label="Select role:" label-for="input-4">
+              <div>
+                <b-form-select v-model="form.roles" :options="userRoles" multiple :select-size="4"></b-form-select>
+              </div>
+              </b-form-group>
+
               <div class="alert-danger" v-if="apiErrors.length">
                 <div v-for="error in apiErrors" :key="error">
                   {{ error }}
                 </div>
               </div>
               <div class="text-center">
-                <b-button type="submit" variant="primary" :disabled="errors.any()">Register</b-button>&nbsp;
+                <b-button type="submit" variant="primary" :disabled="errors.any()">Save</b-button>&nbsp;
               </div>
             </b-form>
           </b-card>
@@ -83,10 +85,15 @@ let userService = new UserService()
 export default {
   data () {
     return {
+      userRoles: [
+        { value: 'ROLE_ADMIN', text: 'Admin' },
+        { value: 'ROLE_USER', text: 'User' }
+      ],
       form: {
         username: '',
-        name: '',
-        newPassword: ''
+        fullName: '',
+        newPassword: '',
+        roles: []
       },
       apiErrors: []
     }
@@ -95,7 +102,7 @@ export default {
     register (evt) {
       userService.register(this.form)
         .then((response) => {
-          console.log(response)
+          location.href = '/users'
         })
         .catch((error) => {
           console.log(error.message)

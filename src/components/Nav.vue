@@ -11,10 +11,11 @@
       </b-nav-form>&emsp;
       <b-nav-item-dropdown right>
         <template slot="button-content">Profile</template>
-        <b-dropdown-item href="/profile"><i class="fas fa-user"></i>&nbsp;My Account</b-dropdown-item>
-        <b-dropdown-item href="#"><i class="fas fa-cog"></i>&nbsp;Settings</b-dropdown-item>
-        <b-dropdown-item href="#"><i class="fas fa-info-circle"></i>&nbsp;Help</b-dropdown-item><hr>
-        <b-dropdown-item href="#" @click="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp;Sign Out</b-dropdown-item>
+        <b-dropdown-item href="/profile"><i class="fas fa-user"></i>My Account</b-dropdown-item>
+        <b-dropdown-item href="/users"><i class="fas fa-clipboard-list"></i>User List</b-dropdown-item>
+        <b-dropdown-item href="#"><i class="fas fa-cog"></i>Settings</b-dropdown-item>
+        <b-dropdown-item href="#"><i class="fas fa-info-circle"></i>Help</b-dropdown-item><hr>
+        <b-dropdown-item href="#" @click="logout()"><i class="fas fa-sign-out-alt"></i>Sign Out</b-dropdown-item>
       </b-nav-item-dropdown>
     </b-navbar-nav>
   </b-navbar>
