@@ -1,10 +1,10 @@
 import apiService from './ApiService'
 export default class UserService {
-  register (userData, type) {
-    const response = apiService.axios().post(`${apiService.getApiUrl()}/user/register.${type}.json`, userData)
+  register (userData) {
+    const response = apiService.axios().post(`${apiService.getApiUrl()}/users`, userData)
     return response.then((response) => {
-      return new Promise((resolve, reject) => {
-        if (response.success) {
+      return new Promise((resolve) => {
+        if (response.statusText === 'OK') {
           return resolve(response)
         } else {
           throw new Error('Error from the api')

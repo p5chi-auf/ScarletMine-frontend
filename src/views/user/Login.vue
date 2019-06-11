@@ -4,13 +4,15 @@
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
           <b-card class="p-3">
-            <h3 class="mb-4">Log In</h3>
+            <h2 class="mb-4 text-center">Log In</h2>
+            <div style="text-align:center">
+              <a href="/register">or create an account</a>
+            </div>
             <b-form @submit.prevent="login" v-if="show" :novalidate="true">
               <b-form-group align="left" id="exampleInputGroup1"
                             label="Username:"
-                            label-for="exampleInput1"
-              >
-                <b-form-input id="exampleInput1"
+                            label-for="exampleInput1">
+                <b-form-input id="exampleInput"
                               type="text"
                               v-model="form.username"
                               placeholder="Enter username"
@@ -40,6 +42,9 @@
               <b-form-group id="exampleGroup4">
                 <b-form-checkbox-group v-model="form.checked" id="exampleChecks">
                   <b-form-checkbox class="mb-2 mr-sm-2 mb-sm-0">Remember me</b-form-checkbox>
+                  <div class="forgot">
+                    <a href="#">Forgot Password!</a>
+                  </div>
                 </b-form-checkbox-group>
               </b-form-group>
               <div class="alert-danger" v-if="apiErrors.length">
@@ -48,12 +53,8 @@
                 </div>
               </div>
               <div class="d-flex justify-content-between">
-                <div>
+                <div style="text-align:center">
                   <b-button type="submit" variant="primary" :disabled="errors.any()">Log In</b-button>&nbsp;
-                  <a href="/register">Register</a>
-                </div>
-                <div>
-                  <a href="#">Forgot Password!</a>
                 </div>
               </div>
             </b-form>
@@ -83,7 +84,7 @@ export default {
     login () {
       authService.login(this.form, 'error')
         .then(() => {
-          location.href = '/profile'
+          location.href = '/'
         })
         .catch((error) => {
           this.apiErrors = [error.message]

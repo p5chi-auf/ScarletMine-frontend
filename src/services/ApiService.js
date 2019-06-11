@@ -13,6 +13,15 @@ class ApiService {
     if (!this.axiosInstance) {
       this.axiosInstance = axios.create()
 
+      this.axiosInstance.interceptors.response.use(function (response) {
+        return response
+      }, function (error) {
+        if (error.response.status === 401) {
+          localStorage.removeItem('jwt_token')
+          window.location = '/login'
+        }
+      })
+
       this.axiosInstance.interceptors.request.use((config) => {
         let headers = {}
 
