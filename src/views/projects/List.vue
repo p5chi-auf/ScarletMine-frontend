@@ -1,25 +1,33 @@
+
 <template>
   <b-container fluid>
 
     <div class="list-of-projects">
-      <a href="/projects/add">Add a project</a>
+      <b-button squared href="/projects/add"><i class="fas fa-plus"></i>Add project</b-button>
     </div>
 
     <b-table
-      striped-hover
+      label-cols-sm
+      head-variant="dark"
+      bordered
+      striped hover
       outlined
       show-empty
       stacked="md"
-      :items="userProvider"
+      :items="projectProvider"
       :fields="fields"
     >
 
       <template slot="actions">
         <div class="table-actions">
-         <span class="action"><i class="far fa-eye"></i></span>
-         <span class="action"><i class="fas fa-edit"></i></span>
-         <span class="action text-danger"><i class="fas fa-trash"></i></span>
+          <span class="action"><i class="far fa-eye"></i></span>
+          <span class="action"><i class="fas fa-pen"></i></span>
+          <span class="action text-danger" v-b-modal.modal-1><i class="fas fa-trash-alt"></i></span>
+           <b-modal id="modal-1">
+    <p class="my-4">Do you want delete this project?</p>
+  </b-modal>
         </div>
+
       </template>
     </b-table>
   </b-container>
@@ -34,13 +42,14 @@ export default {
       fields: [
         { key: 'id', label: 'ID', class: 'text-center' },
         { key: 'name', label: 'Name' },
-        { key: 'actions', label: 'Actions' }
+        { key: 'actions', label: 'Action', class: 'text-center' }
       ]
-
     }
   },
   methods: {
-    userProvider () {
+    delete: function () {
+    },
+    projectProvider () {
       let promise = apiService.axios().get(`${apiService.getApiUrl()}/projects`)
 
       return promise.then((response) => {

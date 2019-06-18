@@ -1,5 +1,5 @@
-.user-role {
-  margin-right: 10px;
+.container-fluid{
+  width: 50%;
 }
 
 .table-actions {
@@ -8,11 +8,15 @@
   }
 }
 
-.list-of-accounts {
-  margin-top: 1%;
-  margin-bottom: 1%;
+.list-of-projects {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
-  a {
-    margin-left: 94%;
+  .btn-secondary {
+    padding: 5px 10px;
+  }
+  i {
+    margin-right: 5px;
   }
 }
