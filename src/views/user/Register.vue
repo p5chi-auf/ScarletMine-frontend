@@ -1,5 +1,5 @@
 <template>
-  <div class="register">
+  <div>
     <b-container>
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
@@ -22,7 +22,6 @@
                   v-validate="{ required: true, email: true }"
                   :state="validateState('username')"
                 ></b-form-input>
-
                 <b-form-invalid-feedback id="input-1-live-feedback">
                   <ul>
                     <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
