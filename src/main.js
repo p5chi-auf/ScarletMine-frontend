@@ -1,3 +1,4 @@
+import 'vue-multiselect/dist/vue-multiselect.min.css'
 import './assets/source/sass/style.scss'
 import router from './router'
 import Vue from 'vue'

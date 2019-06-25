@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="register">
     <b-container>
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
             <h2 class="mb-4 text-center">Create account</h2>
-            <div style="text-align:center">
+            <div class="text-center">
             <a href="/login">or sign in to your account</a>
             </div>
             <b-form @submit.stop.prevent="register" :novalidate="true">
@@ -25,7 +25,7 @@
 
                 <b-form-invalid-feedback id="input-1-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('username')">{{ error }}</li>
+                    <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -42,7 +42,7 @@
                 ></b-form-input>
                 <b-form-invalid-feedback id="input-2-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('full name')">{{ error }}</li>
+                    <li v-for="error in errors.collect('full name')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -55,7 +55,7 @@
                          :state="validateState('password')"></b-input>
                 <b-form-invalid-feedback id="input-3-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('password')">{{ error }}</li>
+                    <li v-for="error in errors.collect('password')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
                 <b-form-text id="password-help-block"></b-form-text> &nbsp;
@@ -92,10 +92,10 @@ export default {
     }
   },
   methods: {
-    register (evt) {
+    register () {
       userService.register(this.form)
         .then((response) => {
-          console.log(response)
+          location.href = '/login'
         })
         .catch((error) => {
           console.log(error.message)

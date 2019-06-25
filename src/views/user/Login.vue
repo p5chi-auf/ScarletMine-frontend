@@ -22,7 +22,7 @@
                 </b-form-input>
                 <b-form-invalid-feedback id="exampleInput1-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('username')">{{ error }}</li>
+                    <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -39,7 +39,7 @@
                 </b-form-input>
                 <b-form-invalid-feedback id="exampleInput2-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('password')">{{ error }}</li>
+                    <li v-for="error in errors.collect('password')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -80,7 +80,7 @@ export default {
         password: '',
         checked: []
       },
-      apiErrors: [],
+      apiErrors: []
     }
   },
   methods: {

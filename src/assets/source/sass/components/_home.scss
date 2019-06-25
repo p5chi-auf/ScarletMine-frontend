@@ -1,0 +1,32 @@
+#home {
+
+  .button {
+    margin-top: 600px;
+    margin-left: 350px;
+  }
+
+  .btn {
+    border: 1px solid white;
+    padding: 10px 25px;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  .btn-one {
+    margin-right: 30px;
+    background-color: rgba(61, 61, 61, 0.87);
+  }
+
+  .btn-one:hover {
+    color: white;
+  }
+
+  .btn-two:hover {
+    color: white;
+    background-color: rgba(61, 61, 61, 0.87);
+    transition: all 0.5s ease-in;
+  }
+}

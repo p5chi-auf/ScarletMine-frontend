@@ -1,24 +1,45 @@
-.user-role {
-  margin-right: 10px;
-}
+#users {
 
-.table-actions {
-  .action {
+  .container-fluid {
+    width: 80%;
+  }
+
+  .user-role {
     margin-right: 10px;
   }
-}
 
-.list-of-accounts {
-  text-align: right;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-  .btn-secondary {
-    padding: 5px 10px;
+  .table-actions {
+    .action {
+      margin-right: 10px;
+    }
+    i {
+      color: black;
+      font-size: 1.1em;
+    }
   }
-  i {
-    margin-right: 5px;
+
+  .list-of-accounts {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .btn-secondary {
+      padding: 5px 10px;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  table {
+    opacity: 0.9;
+    background-color: #fff !important;
+  }
+
+  .badge {
+    width: 50px;
+    font-size: 12px;
   }
 }
-
 
