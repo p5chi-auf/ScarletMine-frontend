@@ -1,0 +1,15 @@
+@each $tag, $config in $headings-font-size {
+  @each $breakPoint, $fontSize in $config {
+    #{$tag},
+    .#{$tag} {
+      @if($breakPoint != xs) {
+        @include media-breakpoint-up($breakPoint) {
+          font-size: $fontSize;
+        }
+      }
+      @else {
+        font-size: $fontSize;
+      }
+    }
+  }
+}

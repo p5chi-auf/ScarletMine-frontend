@@ -12,10 +12,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth: true
-      }
+      component: Home
     },
     {
       path: '/login',
@@ -49,12 +46,34 @@ const router = new Router({
     {
       path: '/users',
       name: 'users',
-      component: () => import(/* webpackChunkName: "about" */ './views/admin/Users.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/admin/Users.vue'),
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/users/add',
       name: 'users-add',
-      component: () => import(/* webpackChunkName: "about" */ './views/admin/UserAdd.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/admin/UserAdd.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/users/edit/:userId',
+      name: 'users-edit',
+      component: () => import(/* webpackChunkName: "about" */ './views/admin/UserEdit.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/boards',
+      name: 'boards',
+      component: () => import(/* webpackChunkName: "about" */ './components/Boards.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
@@ -62,7 +81,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (!authService.isLoggedIn() && to.matched.some(record => record.meta.requiresAuth)) {
     next({
-      name: 'login'
+      name: 'home'
     })
   } else if (authService.isLoggedIn() && to.matched.some(record => record.meta.requiresVisitor)) {
     next({
