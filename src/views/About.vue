@@ -3,8 +3,9 @@
     <b-card no-body class="overflow-hidden">
       <b-row no-gutters>
         <b-col md="6">
-          <b-card-img src="https://picsum.photos/id/300/4272/3048" class="rounded-0"></b-card-img>
-          <h2>ABOUT US</h2>
+          <div class="card-head">
+            <h1>ABOUT US</h1>
+          </div>
         </b-col>
         <b-col md="6">
           <b-card-body align="center">

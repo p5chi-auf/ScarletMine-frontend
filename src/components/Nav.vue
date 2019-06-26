@@ -11,7 +11,7 @@
           <a class="nav-buttons-logged" href="/projects">PROJECTS</a>
           <a class="nav-buttons-logged" href="/users">USERS</a>
         </form>
-        <b-nav-item-dropdown right>
+        <b-nav-item-dropdown right class="profile-dropdown">
           <template slot="button-content">PROFILE</template>
           <b-dropdown-item href="/profile"><i class="fas fa-user"></i>My Account</b-dropdown-item>
           <b-dropdown-item href="#"><i class="fas fa-cog"></i>Settings</b-dropdown-item>

@@ -1,9 +1,7 @@
 <template>
-  <div id="home">
-  <div class="button">
-<a href="#" class="btn btn-one">GET STARTED</a>
-<a href="/about" class="btn btn-two">LEARN MORE</a>
-  </div>
+  <div class="home-buttons-wrapper">
+    <a href="#" class="btn btn-primary">GET STARTED</a>
+    <a href="/about" class="btn btn-outline-primary">LEARN MORE</a>
   </div>
 </template>
 

@@ -3,34 +3,42 @@
     max-width: 1500px;
     opacity: 0.9;
     width: 90%;
-    margin: 7% 10% 0;
-    padding-bottom: 13%;
+    margin: 30px auto 30px;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 100px;
+    }
 
     h3 {
       letter-spacing: 3px;
-      color: rgba(61, 61, 61, 0.87);
-    }
-  }
-
-  .row {
-    padding: 40px;
-
-    h2 {
-      position: absolute;
-      letter-spacing: 4px;
-      color: rgba(61, 61, 61, 0.87);
-      font-size: 70px;
-      padding: 30% 22%;
     }
 
-    .card-text {
-      margin-top: 10%;
-      font-size: 17px;
+    .card-body {
+      .card-text {
+        font-size: 17px;
+      }
+
+      @include media-breakpoint-up(md) {
+        padding: 120px;
+      }
     }
 
-    .card-img {
-      padding: 4% 3%;
-      position: absolute;
+    .card-head {
+      align-items: center;
+      text-align: center;
+      flex-direction: column;
+      justify-content: space-around;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://picsum.photos/id/300/4272/3048');
+      background-position: bottom center;
+      background-size: cover;
+
+      h1 {
+        letter-spacing: 4px;
+        text-shadow: 0 0 5px transparentize($white, .3);
+      }
     }
   }
 }

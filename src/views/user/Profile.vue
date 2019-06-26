@@ -85,18 +85,6 @@ export default {
       items: [
         { fullName: 'Dickerson Macdonald', username: 'macmac', email: 'mac@gmail.com', password: '*********' }
       ]
-      // methods: {
-      //   userProvider () {
-      //     let promise = apiService.axios().get(`${apiService.getApiUrl()}/users${this.$route.params.id}`)
-      //
-      //     return promise.then((response) => {
-      //       return response.data
-      //     }).catch(error => {
-      //       console.log(error)
-      //       return []
-      //     })
-      //   }
-      // }
     }
   }
 }

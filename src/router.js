@@ -66,6 +66,14 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/boards',
+      name: 'boards',
+      component: () => import(/* webpackChunkName: "about" */ './components/Boards.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
