@@ -1,10 +1,73 @@
 .navbar {
-  i {
-    color: white;
-  }
+  padding: 20px;
 }
+
 .dropdown {
   i {
+    margin-right: 5px;
     color: black;
   }
 }
+
+.form-inline {
+  margin-left: 67%;
+
+  #__BVID__9 {
+    a {
+      font-size: 14px;
+      color: $gray-500;
+    }
+  }
+
+  .nav-buttons-logged {
+    padding: 0 15px;
+    font-size: 14px;
+    color: $gray-500;
+
+    i {
+      margin-right: 5px;
+    }
+  }
+}
+
+.nav-buttons {
+  margin-left: 67%;
+  font-size: 14px;
+
+  #navigation {
+    padding: 0 10px;
+    margin-top: 5px;
+    margin-right: 6px;
+
+    a {
+      padding: 0 15px;
+      color: $gray-500;
+    }
+  }
+
+  .log {
+    margin-top: 5px;
+    margin-right: 6px;
+
+    a {
+      color: $gray-500;
+    }
+  }
+
+  .btn-secondary {
+    font-size: 14px;
+  }
+}
+
+#logo {
+  position: absolute;
+  font-size: 18px;
+  color: $gray-500;
+  margin-left: 20%;
+
+  b {
+    font-size: 24.5px;
+  }
+}
+
+

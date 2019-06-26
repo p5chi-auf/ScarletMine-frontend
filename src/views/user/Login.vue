@@ -5,10 +5,10 @@
         <b-col cols="12" md="6">
           <b-card class="p-3">
             <h2 class="mb-4 text-center">Log In</h2>
-            <div style="text-align:center">
+            <div class="text-center">
               <a href="/register">or create an account</a>
             </div>
-            <b-form @submit.prevent="login" v-if="show" :novalidate="true">
+            <b-form @submit.prevent="login" :novalidate="true">
               <b-form-group align="left" id="exampleInputGroup1"
                             label="Username:"
                             label-for="exampleInput1">
@@ -16,12 +16,14 @@
                               type="text"
                               v-model="form.username"
                               placeholder="Enter username"
-                              name="form.username"
+                              name="username"
                               v-validate="{ required: true }"
-                              :state="validateState('form.username')">
+                              :state="validateState('username')">
                 </b-form-input>
                 <b-form-invalid-feedback id="exampleInput1-live-feedback">
-                  Username request!
+                  <ul>
+                    <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
+                  </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group align="left" id="exampleInputGroup2"
@@ -31,12 +33,14 @@
                               type="password"
                               v-model="form.password"
                               placeholder="Enter password"
-                              name="form.Password"
+                              name="password"
                               v-validate="{ required: true }"
-                              :state="validateState('form.Password')">
+                              :state="validateState('password')">
                 </b-form-input>
                 <b-form-invalid-feedback id="exampleInput2-live-feedback">
-                  Password request!
+                  <ul>
+                    <li v-for="error in errors.collect('password')" :key="error">{{ error }}</li>
+                  </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
               <b-form-group id="exampleGroup4">
@@ -76,13 +80,12 @@ export default {
         password: '',
         checked: []
       },
-      apiErrors: [],
-      show: true
+      apiErrors: []
     }
   },
   methods: {
     login () {
-      authService.login(this.form, 'error')
+      authService.login(this.form)
         .then(() => {
           location.href = '/'
         })

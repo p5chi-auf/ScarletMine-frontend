@@ -1,27 +1,49 @@
 <template>
-  <b-navbar v-if="isLoggedIn" toggleable="lg" type="dark" variant="dark">
-    <router-link to="/"><i class="fas fa-home fa-lg"></i></router-link>&emsp;
-    <b-navbar-brand href="#">LOGO</b-navbar-brand>
+  <b-navbar-nav>
+    <b-navbar v-if="isLoggedIn" toggleable="lg" type="dark" variant="light">
+      <b-navbar-brand id="logo" href="#"><b>SCARLET</b>MINE</b-navbar-brand>
 
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-    <b-navbar-nav class="ml-auto">
-      <b-nav-form>
-        <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-        <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-      </b-nav-form>&emsp;
-      <b-nav-item-dropdown right>
-        <template slot="button-content">Profile</template>
-        <b-dropdown-item href="/profile"><i class="fas fa-user"></i>&nbsp;My Account</b-dropdown-item>
-        <b-dropdown-item href="#"><i class="fas fa-cog"></i>&nbsp;Settings</b-dropdown-item>
-        <b-dropdown-item href="#"><i class="fas fa-info-circle"></i>&nbsp;Help</b-dropdown-item><hr>
-        <b-dropdown-item href="#" @click="logout()"><i class="fas fa-sign-out-alt"></i>&nbsp;Sign Out</b-dropdown-item>
-      </b-nav-item-dropdown>
-    </b-navbar-nav>
-  </b-navbar>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-nav class="form-inline">
+        <form>
+          <a class="nav-buttons-logged" href="/">HOME</a>
+          <a class="nav-buttons-logged" href="/about">ABOUT</a>
+          <a class="nav-buttons-logged" href="/projects">PROJECTS</a>
+          <a class="nav-buttons-logged" href="/users">USERS</a>
+        </form>
+        <b-nav-item-dropdown right class="profile-dropdown">
+          <template slot="button-content">PROFILE</template>
+          <b-dropdown-item href="/profile"><i class="fas fa-user"></i>My Account</b-dropdown-item>
+          <b-dropdown-item href="#"><i class="fas fa-cog"></i>Settings</b-dropdown-item>
+          <b-dropdown-item href="#"><i class="fas fa-info-circle"></i>Help</b-dropdown-item>
+          <hr>
+          <b-dropdown-item href="#" @click="logout()"><i class="fas fa-sign-out-alt"></i>Sign Out</b-dropdown-item>
+        </b-nav-item-dropdown>
+      </b-navbar-nav>
+    </b-navbar>
+    <b-navbar v-if="!isLoggedIn" toggleable="lg" type="dark" variant="light">
+      <span id="logo" href="#"><b>SCARLET</b>MINE</span>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-navbar-nav class="nav-buttons">
+        <div id="navigation">
+          <a href="/">HOME</a>
+          <a href="/about">ABOUT</a>
+        </div>
+        <div class="log">
+          <a href="/login">LOGIN</a>
+        </div>
+        <b-button size="sm" squared href="/register">REGISTER</b-button>
+      </b-navbar-nav>
+    </b-navbar>
+  </b-navbar-nav>
 </template>
+
 <script>
 
 import AuthService from '../services/AuthService'
+
 const authService = new AuthService()
 
 export default {
@@ -34,7 +56,7 @@ export default {
   methods: {
     logout () {
       authService.logout()
-      location.href = '/login'
+      location.href = '/'
     }
   }
 }

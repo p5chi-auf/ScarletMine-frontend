@@ -5,7 +5,7 @@
         <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
             <h2 class="mb-4 text-center">Add new user account</h2>
-            <b-form @submit.stop.prevent="register" :novalidate="true">
+            <b-form @submit.stop.prevent="createUser" :novalidate="true">
               <b-form-group id="input-group-1"
                             label="Username:"
                             label-for="input-1"
@@ -21,7 +21,7 @@
                 ></b-form-input>
                 <b-form-invalid-feedback id="input-1-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('username')">{{ error }}</li>
+                    <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -38,7 +38,7 @@
                 ></b-form-input>
                 <b-form-invalid-feedback id="input-2-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('full name')">{{ error }}</li>
+                    <li v-for="error in errors.collect('full name')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -51,14 +51,21 @@
                          :state="validateState('password')"></b-input>
                 <b-form-invalid-feedback id="input-3-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('password')">{{ error }}</li>
+                    <li v-for="error in errors.collect('password')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
                 <b-form-text id="password-help-block"></b-form-text> &nbsp;
               </b-form-group>
               <b-form-group id="input-group-4" label="Select role:" label-for="input-4">
               <div>
-                <b-form-select v-model="form.roles" :options="userRoles" multiple :select-size="4"></b-form-select>
+                <multiselect
+                  v-model="form.roles"
+                  :options="userRoles"
+                  :multiple="true"
+                  label="text"
+                  track-by="value"
+                  :close-on-select="true">
+                </multiselect>
               </div>
               </b-form-group>
 
@@ -79,16 +86,15 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
 import UserService from '../../services/UserService'
 let userService = new UserService()
 
 export default {
+  components: { Multiselect },
   data () {
     return {
-      userRoles: [
-        { value: 'ROLE_ADMIN', text: 'Admin' },
-        { value: 'ROLE_USER', text: 'User' }
-      ],
+      selected: [],
       form: {
         username: '',
         fullName: '',
@@ -98,10 +104,15 @@ export default {
       apiErrors: []
     }
   },
+  computed: {
+    userRoles () {
+      return userService.getAllRoles()
+    }
+  },
   methods: {
-    register (evt) {
-      userService.register(this.form, 'error')
-        .then((response) => {
+    createUser () {
+      userService.createUser(this.form)
+        .then(() => {
           location.href = '/users'
         })
         .catch((error) => {
