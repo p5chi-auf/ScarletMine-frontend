@@ -67,8 +67,13 @@ const router = new Router({
     },
     {
       path: '/projects/add',
-      name: 'projects-add',
+      name: 'project-add',
       component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectAdd.vue')
+    },
+    {
+      path: '/projects/edit',
+      name: 'project-edit',
+      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectEdit.vue')
     }
   ]
 })

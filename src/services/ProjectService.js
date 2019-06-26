@@ -1,6 +1,6 @@
 import apiService from './ApiService'
 export default class ProjectService {
-  register (projectData) {
+  create (projectData) {
     const response = apiService.axios().post(`${apiService.getApiUrl()}/projects`, projectData)
     return response.then((response) => {
       return new Promise((resolve) => {

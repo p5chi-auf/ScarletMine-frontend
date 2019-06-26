@@ -5,7 +5,7 @@
                 <b-col cols="12" md="6">
                     <b-card class="p-3 text-left">
                         <h2 class="mb-4 text-center">Add new project</h2>
-                        <b-form @submit.stop.prevent="register" :novalidate="true">
+                        <b-form @submit.stop.prevent="create" :novalidate="true">
 
                                 <b-form-group id="input-group-2" label="Project name:" label-for="input-2">
                                 <b-form-input
@@ -55,8 +55,8 @@ export default {
     }
   },
   methods: {
-    register (evt) {
-      projectService.register(this.form, 'error')
+    create (evt) {
+      projectService.create(this.form, 'error')
         .then((response) => {
           location.href = '/projects'
         })

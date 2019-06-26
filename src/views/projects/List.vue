@@ -7,6 +7,7 @@
     </div>
 
     <b-table
+      id="projects-table"
       label-cols-sm
       head-variant="dark"
       bordered
@@ -18,14 +19,12 @@
       :fields="fields"
     >
 
-      <template slot="actions">
+      <template slot="actions" slot-scope="row">
         <div class="table-actions">
           <span class="action"><i class="far fa-eye"></i></span>
-          <span class="action"><i class="fas fa-pen"></i></span>
-          <span class="action text-danger" v-b-modal.modal-1><i class="fas fa-trash-alt"></i></span>
-           <b-modal id="modal-1">
-    <p class="my-4">Do you want delete this project?</p>
-  </b-modal>
+          <router-link :id="row.index" @click="editElement" to="/projects/edit" class="action"><i class="fas fa-pen"></i></router-link>
+          <span class="action text-danger" v-b-modal="`modal-${row.index}`"><i class="fas fa-trash-alt"></i></span>
+          <b-modal :id="`modal-${row.index}`" @ok="removeElement(row.item.id)"> Do you want delete this project? </b-modal>
         </div>
 
       </template>
@@ -47,8 +46,18 @@ export default {
     }
   },
   methods: {
-    delete: function () {
+    removeElement (projectId) {
+      console.log(projectId)
+      let promise = apiService.axios().delete(`${apiService.getApiUrl()}/projects/${projectId}`)
+
+      return promise.then((response) => {
+        this.$root.$emit('bv::refresh::table', 'projects-table')
+      }).catch(error => {
+        console.log(error)
+        return []
+      })
     },
+
     projectProvider () {
       let promise = apiService.axios().get(`${apiService.getApiUrl()}/projects`)
 
