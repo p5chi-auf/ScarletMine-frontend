@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import List from './views/projects/List'
 import AuthService from './services/AuthService'
 const authService = new AuthService()
 Vue.use(Router)
@@ -71,6 +72,27 @@ const router = new Router({
       path: '/boards',
       name: 'boards',
       component: () => import(/* webpackChunkName: "about" */ './components/Boards.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/projects',
+      name: 'projects',
+      component: List,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/projects/add',
+      name: 'project-add',
+      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectAdd.vue')
+    },
+    {
+      path: '/projects/edit/:projectId',
+      name: 'projects-edit',
+      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectEdit.vue'),
       meta: {
         requiresAuth: true
       }

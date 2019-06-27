@@ -94,6 +94,7 @@ export default {
     }
   },
   mounted () {
+    // get the user from API
     this.getUser()
   },
   methods: {
