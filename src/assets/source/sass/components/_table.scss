@@ -1,27 +1,73 @@
-.container-fluid{
+#users {
 
-}
+  .container-fluid {
+    width: 80%;
+  }
 
-.b-table{
-  width: 50%;
-  margin: 0 auto;
-}
-
-.table-actions {
-  .action {
+  .user-role {
     margin-right: 10px;
   }
+
+  .table-actions {
+    .action {
+      margin-right: 10px;
+    }
+    i {
+      color: black;
+      font-size: 1.1em;
+    }
+  }
+
+  .list-of-accounts {
+    text-align: right;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .btn-secondary {
+      padding: 5px 10px;
+    }
+
+    i {
+      margin-right: 5px;
+    }
+  }
+
+  table {
+    opacity: 0.9;
+    background-color: #fff !important;
+  }
+
+  .badge {
+    width: 50px;
+    font-size: 12px;
+  }
 }
 
-.list-of-projects {
-  text-align: right;
-  margin-top: 10px;
-  margin-bottom: 10px;
+    .b-table {
+      width: 50%;
+      margin: 0 auto;
+    }
 
-  .btn-secondary {
-    padding: 5px 10px;
-  }
-  i {
-    margin-right: 5px;
-  }
-}
+    .table-actions {
+      .action {
+        margin-right: 10px;
+      }
+    }
+
+    .list-of-projects {
+      text-align: right;
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      .btn-secondary {
+        padding: 5px 10px;
+      }
+
+      i {
+        margin-right: 5px;
+      }
+    }
+    table {
+      opacity: 0.9;
+      background-color: #fff !important;
+    }

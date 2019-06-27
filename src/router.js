@@ -78,7 +78,7 @@ const router = new Router({
     },
     {
       path: '/projects',
-      name: 'project_list',
+      name: 'projects',
       component: List,
       meta: {
         requiresAuth: true
@@ -90,9 +90,12 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectAdd.vue')
     },
     {
-      path: '/projects/edit',
-      name: 'project-edit',
-      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectEdit.vue')
+      path: '/projects/edit/:projectId',
+      name: 'projects-edit',
+      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectEdit.vue'),
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
