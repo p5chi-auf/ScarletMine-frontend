@@ -56,11 +56,9 @@
                   {{ error }}
                 </div>
               </div>
-              <div class="d-flex justify-content-between">
-                <div style="text-align:center">
-                  <b-button type="submit" variant="primary" :disabled="errors.any()">Log In</b-button>&nbsp;
+                <div class="text-center">
+                  <b-button type="submit" variant="primary" :disabled="errors.any()">Log In</b-button>
                 </div>
-              </div>
             </b-form>
           </b-card>
         </b-col>

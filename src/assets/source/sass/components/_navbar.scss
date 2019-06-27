@@ -1,73 +1,98 @@
 .navbar {
-  padding: 20px;
-}
+  padding: 15px;
 
-.dropdown {
-  i {
-    margin-right: 5px;
-    color: black;
-  }
-}
+  .nav-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
 
-.form-inline {
-  margin-left: 67%;
+    @include media-breakpoint-up(md) {
+      align-items:center;
+      flex-direction: row;
+    }
 
-  #__BVID__9 {
-    a {
-      font-size: 14px;
-      color: $gray-500;
+    .nav-links-wrapper {
+
     }
   }
 
-  .nav-buttons-logged {
-    padding: 0 15px;
-    font-size: 14px;
-    color: $gray-500;
+  .nav-header {
+    display: flex;
+    align-items: center;
 
+    .navbar-toggler {
+      margin-left: auto;
+    }
+  }
+
+  .dropdown {
     i {
       margin-right: 5px;
+      color: $black;
     }
   }
-}
 
-.nav-buttons {
-  margin-left: 67%;
-  font-size: 14px;
+  //.form-inline {
+    //margin-left: 695px;
 
-  #navigation {
-    padding: 0 10px;
-    margin-top: 5px;
-    margin-right: 6px;
+    .profile-dropdown {
+      color: $gray-500;
+      font-size:14px;
+      a {
+        font-size: 14px;
+        color: $gray-500;
+      }
+    }
 
-    a {
+    .nav-link {
       padding: 0 15px;
+      font-size: 14px;
       color: $gray-500;
+
+      i {
+        margin-right: 5px;
+      }
     }
-  }
+  //}
 
-  .log {
-    margin-top: 5px;
-    margin-right: 6px;
-
-    a {
-      color: $gray-500;
-    }
-  }
-
-  .btn-secondary {
+  .nav-buttons {
+    margin-left: 950px;
     font-size: 14px;
+
+    #navigation {
+      padding: 0 10px;
+      margin-top: 5px;
+      margin-right: 6px;
+
+      a {
+        padding: 0 15px;
+        color: $gray-500;
+      }
+    }
+
+    .log {
+      margin-top: 5px;
+      margin-right: 6px;
+
+      a {
+        color: $gray-500;
+      }
+    }
+
+    .btn-secondary {
+      font-size: 14px;
+    }
+  }
+
+  #logo {
+    //position: absolute;
+    font-size: 18px;
+    color: $gray-500;
+    //margin-left: 180px;
+
+    b {
+      font-size: 24.5px;
+    }
   }
 }
-
-#logo {
-  position: absolute;
-  font-size: 18px;
-  color: $gray-500;
-  margin-left: 20%;
-
-  b {
-    font-size: 24.5px;
-  }
-}
-
 

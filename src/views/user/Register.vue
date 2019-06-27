@@ -4,11 +4,8 @@
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
-            <h2 class="mb-4 text-center">Create account</h2>
-            <div class="text-center">
-            <a href="/login">or sign in to your account</a>
-            </div>
-            <b-form @submit.stop.prevent="register" :novalidate="true">
+            <h2 class="mb-4 text-center">Add new user account</h2>
+            <b-form @submit.stop.prevent="createUser" :novalidate="true">
               <b-form-group id="input-group-1"
                             label="Username:"
                             label-for="input-1"
@@ -34,7 +31,7 @@
                   id="input-2"
                   v-model="form.fullName"
                   name="full name"
-                  v-validate="{ required: true, min: 3 }"
+                  v-validate="{ required: true }"
                   :state="validateState('full name')"
                   aria-describedby="input-2-live-feedback"
                   placeholder="Enter name"
@@ -59,13 +56,26 @@
                 </b-form-invalid-feedback>
                 <b-form-text id="password-help-block"></b-form-text> &nbsp;
               </b-form-group>
+              <b-form-group id="input-group-4" label="Select role:" label-for="input-4">
+              <div>
+                <multiselect
+                  v-model="form.roles"
+                  :options="userRoles"
+                  :multiple="true"
+                  label="text"
+                  track-by="value"
+                  :close-on-select="true">
+                </multiselect>
+              </div>
+              </b-form-group>
+
               <div class="alert-danger" v-if="apiErrors.length">
                 <div v-for="error in apiErrors" :key="error">
                   {{ error }}
                 </div>
               </div>
               <div class="text-center">
-                <b-button type="submit" variant="primary" :disabled="errors.any()">Register</b-button>&nbsp;
+                <b-button type="submit" variant="primary" :disabled="errors.any()">Save</b-button>&nbsp;
               </div>
             </b-form>
           </b-card>
@@ -76,25 +86,34 @@
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
 import UserService from '../../services/UserService'
 let userService = new UserService()
 
 export default {
+  components: { Multiselect },
   data () {
     return {
+      selected: [],
       form: {
         username: '',
-        name: '',
-        newPassword: ''
+        fullName: '',
+        newPassword: '',
+        roles: []
       },
       apiErrors: []
     }
   },
+  computed: {
+    userRoles () {
+      return userService.getAllRoles()
+    }
+  },
   methods: {
-    register () {
+    createUser () {
       userService.register(this.form)
-        .then((response) => {
-          location.href = '/login'
+        .then(() => {
+          location.href = '/users'
         })
         .catch((error) => {
           console.log(error.message)
