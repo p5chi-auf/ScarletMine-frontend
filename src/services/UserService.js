@@ -15,6 +15,21 @@ export default class UserService {
       })
     })
   }
+  register (userData) {
+    userData = this.transformForApi(userData)
+
+    const response = apiService.axios().post(`${apiService.getApiUrl()}/user-register`, userData)
+
+    return response.then((response) => {
+      return new Promise((resolve) => {
+        if (response.statusText === 'OK') {
+          return resolve(response)
+        } else {
+          throw new Error('Error from the api')
+        }
+      })
+    })
+  }
 
   updateUser (userId, userData) {
     userData = this.transformForApi(userData)
@@ -50,13 +65,15 @@ export default class UserService {
       return role.value
     })
 
+    user.projectRoles = []
+
     return user
   }
 
   transformForFront (user) {
     const transformedRoles = user.roles.map(role => {
       return this.getAllRoles().find(multiSelectRole => {
-        return multiSelectRole.value === role
+        return multiSelectRole.text === role
       })
     })
 
@@ -83,8 +100,10 @@ export default class UserService {
 
   getAllRoles () {
     return [
-      { value: 'ROLE_ADMIN', text: 'Admin' },
-      { value: 'ROLE_USER', text: 'User' }
+      { value: 1, text: 'Admin' },
+      { value: 2, text: 'Internal' },
+      { value: 3, text: 'External' },
+      { value: 4, text: 'User' }
     ]
   }
 }

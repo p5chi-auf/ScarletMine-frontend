@@ -1,6 +1,6 @@
 
 <template>
-  <b-container fluid>
+  <b-container fluid class="custom-container">
 
     <div class="list-of-projects">
       <b-button squared href="/projects/add"><i class="fas fa-plus"></i>Add project</b-button>

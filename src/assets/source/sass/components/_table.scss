@@ -1,9 +1,13 @@
-#users {
+.custom-container {
+  width: 100%;
+  margin: 0 auto;
 
-  .container-fluid {
+  @include media-breakpoint-up(md) {
     width: 80%;
   }
+}
 
+#users {
   .user-role {
     margin-right: 10px;
   }
@@ -23,10 +27,6 @@
     margin-top: 10px;
     margin-bottom: 10px;
 
-    .btn-secondary {
-      padding: 5px 10px;
-    }
-
     i {
       margin-right: 5px;
     }
@@ -38,36 +38,35 @@
   }
 
   .badge {
-    width: 50px;
     font-size: 12px;
   }
 }
 
-    .b-table {
-      width: 50%;
-      margin: 0 auto;
-    }
+.b-table {
+  //width: 50%;
+  margin: 0 auto;
+}
 
-    .table-actions {
-      .action {
-        margin-right: 10px;
-      }
-    }
+.table-actions {
+  .action {
+    margin-right: 10px;
+  }
+}
 
-    .list-of-projects {
-      text-align: right;
-      margin-top: 10px;
-      margin-bottom: 10px;
+.list-of-projects {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
-      .btn-secondary {
-        padding: 5px 10px;
-      }
+  .btn-secondary {
+    padding: 5px 10px;
+  }
 
-      i {
-        margin-right: 5px;
-      }
-    }
-    table {
-      opacity: 0.9;
-      background-color: #fff !important;
-    }
+  i {
+    margin-right: 5px;
+  }
+}
+table {
+  opacity: 0.9;
+  background-color: #fff !important;
+}
