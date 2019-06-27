@@ -1,9 +1,13 @@
-#users {
+.custom-container {
+  width: 100%;
+  margin: 0 auto;
 
-  .container-fluid {
+  @include media-breakpoint-up(md) {
     width: 80%;
   }
+}
 
+#users {
   .user-role {
     margin-right: 10px;
   }
@@ -22,10 +26,6 @@
     text-align: right;
     margin-top: 10px;
     margin-bottom: 10px;
-
-    .btn-secondary {
-      padding: 5px 10px;
-    }
 
     i {
       margin-right: 5px;
