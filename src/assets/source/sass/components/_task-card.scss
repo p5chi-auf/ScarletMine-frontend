@@ -1,0 +1,79 @@
+.title-wrapper {
+  overflow: hidden;
+
+  .window-title {
+    float:left;
+
+    i {
+      margin-right: 15px;
+      font-size: 17px;
+    }
+  }
+
+  .project-title {
+    margin-left: 5px;
+    padding-top: 3px;
+    float: left;
+
+    h5 {
+      font-size: 15px;
+    }
+  }
+}
+
+.list-status {
+  margin-left: 34px;
+  color: $gray-500;
+}
+
+.member-list {
+  padding-top: 15px;
+
+  i {
+    margin-right: 15px;
+    font-size: 17px;
+  }
+
+  .avatar {
+    margin-left: 34px;
+    font-size: 14px !important;
+    color: black !important;
+    background-color: $gray-500 !important ;
+  }
+}
+
+.card-description {
+  padding-top: 20px;
+
+  i {
+    margin-right: 15px;
+    font-size: 17px;
+  }
+
+  .edit-controls {
+    margin-left: 34px;
+    line-height: 40px;
+
+    .close-button {
+      i {
+        font-size: 24px;
+      }
+    }
+  }
+
+ .textarea-field-description {
+   background-color: rgba(9,30,66,.04);
+   border: none;
+   box-shadow: none;
+   border-radius: 3px;
+   resize: none;
+   width: 400px;
+   padding: 8px 12px;
+   margin-left: 34px;
+   margin-top: 10px;
+
+   a{
+     color: #172b4d;
+   }
+ }
+}

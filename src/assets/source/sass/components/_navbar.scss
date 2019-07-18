@@ -1,5 +1,6 @@
 .navbar {
   padding: 15px;
+  min-height: $navbar-height;
 
   .nav-wrapper {
     display: flex;
@@ -12,7 +13,9 @@
     }
 
     .nav-links-wrapper {
-
+     .navbar-nav {
+       align-items: center;
+     }
     }
   }
 
@@ -32,17 +35,14 @@
     }
   }
 
-  //.form-inline {
-    //margin-left: 695px;
-
-    .profile-dropdown {
+   .profile-dropdown {
+    color: $gray-500;
+    font-size:14px;
+    a {
+      font-size: 14px;
       color: $gray-500;
-      font-size:14px;
-      a {
-        font-size: 14px;
-        color: $gray-500;
-      }
     }
+  }
 
     .nav-link {
       padding: 0 15px;
@@ -53,7 +53,6 @@
         margin-right: 5px;
       }
     }
-  //}
 
   .nav-buttons {
     margin-left: 950px;
@@ -85,10 +84,8 @@
   }
 
   #logo {
-    //position: absolute;
     font-size: 18px;
     color: $gray-500;
-    //margin-left: 180px;
 
     b {
       font-size: 24.5px;

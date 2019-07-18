@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import List from './views/projects/List'
+import List from './views/projects/Projects'
 import AuthService from './services/AuthService'
 const authService = new AuthService()
+
+
 Vue.use(Router)
 
 const router = new Router({
@@ -49,6 +51,7 @@ const router = new Router({
       name: 'users',
       component: () => import(/* webpackChunkName: "about" */ './views/admin/Users.vue'),
       meta: {
+        authorize: [],
         requiresAuth: true
       }
     },
@@ -93,6 +96,22 @@ const router = new Router({
       path: '/projects/edit/:projectId',
       name: 'projects-edit',
       component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectEdit.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/projects/tasks/',
+      name: 'tasks',
+      component: () => import(/* webpackChunkName: "about" */ './views/projects/TaskList.vue'),
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/projects/tasks/task',
+      name: 'task',
+      component: () => import(/* webpackChunkName: "about" */ './views/projects/TaskCard.vue'),
       meta: {
         requiresAuth: true
       }

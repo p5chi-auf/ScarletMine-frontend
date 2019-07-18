@@ -7,34 +7,64 @@
   }
 }
 
-#users {
+ h2{
+   padding-top: 15px;
+   text-align: center;
+ }
+
+.add-button {
+  text-align: right;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+.table-actions {
+  .action {
+    margin-right: 10px;
+
+    i {
+      font-size: 1.1em;
+    }
+  }
+
+  .text-danger {
+    margin-left: 10px;
+  }
+}
+
+table {
+  opacity: 0.9;
+  background-color: #fff !important;
+}
+
+.list {
+  min-height: calc(100vh - #{$navbar-height});
+  //background-image: url('~/img/boards.jpg');
+  //background-size: 100% auto;
+  //background-repeat: no-repeat;
+
+  .filter-page {
+    margin-top: 30px;
+  }
+
   .user-role {
     margin-right: 10px;
   }
 
   .table-actions {
+    margin-left: 20px;
+
     .action {
       margin-right: 10px;
     }
     i {
-      color: black;
+      color: $black;
       font-size: 1.1em;
     }
-  }
-
-  .list-of-accounts {
-    text-align: right;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    i {
-      margin-right: 5px;
-    }
-  }
-
-  table {
-    opacity: 0.9;
-    background-color: #fff !important;
   }
 
   .badge {
@@ -42,31 +72,3 @@
   }
 }
 
-.b-table {
-  //width: 50%;
-  margin: 0 auto;
-}
-
-.table-actions {
-  .action {
-    margin-right: 10px;
-  }
-}
-
-.list-of-projects {
-  text-align: right;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-  .btn-secondary {
-    padding: 5px 10px;
-  }
-
-  i {
-    margin-right: 5px;
-  }
-}
-table {
-  opacity: 0.9;
-  background-color: #fff !important;
-}

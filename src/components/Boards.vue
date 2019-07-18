@@ -1,145 +1,195 @@
 <template>
   <div class="board">
-  <div class="drag-container">
-    <ul class="drag-list">
-      <li class="drag-column drag-column-on-hold">
-    <span class="drag-column-header">
-      <h2>On Hold</h2>
-      <svg class="drag-header-more" data-target="options1" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/</svg>
-    </span>
-
-        <div class="drag-options" id="options1"></div>
-
-        <ul class="drag-inner-list" id="1">
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-        </ul>
-      </li>
-      <li class="drag-column drag-column-in-progress">
-    <span class="drag-column-header">
-      <h2>In Progress</h2>
-      <svg class="drag-header-more" data-target="options2" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/</svg>
-    </span>
-        <div class="drag-options" id="options2"></div>
-        <ul class="drag-inner-list" id="2">
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-        </ul>
-      </li>
-      <li class="drag-column drag-column-needs-review">
-    <span class="drag-column-header">
-      <h2>Needs Review</h2>
-      <svg data-target="options3" class="drag-header-more" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/</svg>
-    </span>
-        <div class="drag-options" id="options3"></div>
-        <ul class="drag-inner-list" id="3">
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-        </ul>
-      </li>
-      <li class="drag-column drag-column-approved">
-    <span class="drag-column-header">
-      <h2>Approved</h2>
-      <svg data-target="options4" class="drag-header-more" fill="#FFFFFF" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/</svg>
-    </span>
-        <div class="drag-options" id="options4"></div>
-        <ul class="drag-inner-list" id="4">
-          <li class="drag-item"></li>
-          <li class="drag-item"></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
+    <div class="task-container">
+      <ul class="task-list">
+        <li class="task-column task-column-on-hold">
+          <span class="task-column-header">
+            <h2>Backlog</h2>
+          </span>
+          <div class="task-input">
+            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('tasks')" v-model="create.tasks">
+          </div>
+          <ul class="task-inner-list" id="tasks">
+            <li v-for="item in tasks" class="task-item">
+              <h1>{{item.name}}</h1>
+              <ul class="assigned">
+                <li v-for="dev in item.assigned">
+                  <img :src="dev.avatar" alt="" />
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="task-column task-column-in-progress">
+          <span class="task-column-header">
+          <h2>In Progress</h2>
+        </span>
+          <div class="task-input">
+            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('inprogress')" v-model="create.inprogress">
+          </div>
+          <ul class="task-inner-list" id="inprogress">
+            <li v-for="item in inprogress" class="task-item">
+              <h1>{{item.name}}</h1>
+              <ul class="assigned">
+                <li v-for="dev in item.assigned">
+                  <img :src="dev.avatar" alt="" />
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="task-column task-column-needs-review">
+          <span class="task-column-header">
+          <h2>Needs Review</h2>
+        </span>
+          <div class="task-input">
+            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('review')" v-model="create.review">
+          </div>
+          <ul class="task-inner-list" id="review">
+            <li v-for="item in review" class="task-item">
+              <h1>{{item.name}}</h1>
+              <ul class="assigned">
+                <li v-for="dev in item.assigned">
+                  <img :src="dev.avatar" alt="" />
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="task-column task-column-approved">
+          <span class="task-column-header">
+            <h2>Approved</h2>
+          </span>
+          <div class="task-input">
+            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('approved')" v-model="create.approved">
+          </div>
+          <ul class="task-inner-list" id="approved">
+            <li v-for="item in approved" class="task-item">
+              <h1>{{item.name}}</h1>
+              <ul class="assigned">
+                <li v-for="dev in item.assigned">
+                  <img :src="dev.avatar" alt="" />
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
-<!--<script>-->
-<!-- dragula ([-->
-<!--  document.getElementById('1'),-->
-<!--  document.getElementById('2'),-->
-<!--  document.getElementById('3'),-->
-<!--  document.getElementById('4'),-->
-<!--  document.getElementById('5')-->
-<!--])-->
+<script>
+import dragula from '../../node_modules/dragula/dragula'
+export default {
+  data () {
+    return {
+      created: onCreate,
+      create: {},
+      tasks: [{
+        name: 'New sidebar design',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }, {
+        name: 'Header design features',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }],
+      inprogress: [{
+        name: 'Login error',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }],
+      review: [{
+        name: 'Onboarding screens',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }, {
+        name: 'Dashboard design',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }],
+      approved: [{
+        name: 'Account settings screen',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }, {
+        name: 'Mobile layout',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }, {
+        name: 'On scroll header layout',
+        tracked: false,
+        assigned: [{
+          avatar: 'https://upload.wikimedia.org/wikipedia/en/7/70/Shawn_Tok_Profile.jpg'
+        }, {
+          avatar: 'https://d.fastcompany.net/multisite_files/fastcompany/fc_files/profile/2219225-austin-carr-profile.jpg'
+        }]
+      }]
+    }
+  },
+  methods: {
+    addIssue: function (key) {
+      if (!this.create[key]) return
+      this[key].push({
+        name: this.create[key],
+        tracked: false
+      })
+      this.create[key] = ''
+    }
+  }
+}
 
-<!--  .on('drag', function(el) {-->
+function onCreate () {
+  $(document).ready(() => {
+    dragula([
+      document.getElementById('tasks'),
+      document.getElementById('inprogress'),
+      document.getElementById('review'),
+      document.getElementById('approved')
+    ])
 
-<!--    // add 'is-moving' class to element being dragged-->
-<!--    el.classList.add('is-moving');-->
-<!--  })-->
-<!--  .on('dragend', function(el) {-->
+      .on('drag', function (el) {
+        el.classList.add('is-moving')
+      })
 
-<!--    // remove 'is-moving' class from element after dragging has stopped-->
-<!--    el.classList.remove('is-moving');-->
-
-<!--    // add the 'is-moved' class for 600ms then remove it-->
-<!--    window.setTimeout(function() {-->
-<!--      el.classList.add('is-moved');-->
-<!--      window.setTimeout(function() {-->
-<!--        el.classList.remove('is-moved');-->
-<!--      }, 600)-->
-<!--    }, 100)-->
-<!--  })-->
-
-<!--var createOptions = (function () {-->
-<!--  var dragOptions = document.querySelectorAll('.drag-options')-->
-
-<!--  // these strings are used for the checkbox labels-->
-<!--  var options = ['Research', 'Strategy', 'Inspiration', 'Execution']-->
-
-<!--  // create the checkbox and labels here, just to keep the html clean. append the <label> to '.drag-options'-->
-<!--  function create() {-->
-<!--    for (var i = 0; i < dragOptions.length; i++) {-->
-
-<!--      options.forEach(function(item) {-->
-<!--        var checkbox = document.createElement('input');-->
-<!--        var label = document.createElement('label');-->
-<!--        var span = document.createElement('span');-->
-<!--        checkbox.setAttribute('type', 'checkbox');-->
-<!--        span.innerHTML = item;-->
-<!--        label.appendChild(span);-->
-<!--        label.insertBefore(checkbox, label.firstChild);-->
-<!--        label.classList.add('drag-options-label');-->
-<!--        dragOptions[i].appendChild(label);-->
-<!--      });-->
-
-<!--    }-->
-<!--  }-->
-
-<!--  return {-->
-<!--    create: create-->
-<!--  }-->
-
-
-<!--}());-->
-
-<!--var showOptions = (function () {-->
-
-<!--  // the 3 dot icon-->
-<!--  var more = document.querySelectorAll('.drag-header-more');-->
-
-<!--  function show() {-->
-<!--    // show 'drag-options' div when the more icon is clicked-->
-<!--    var target = this.getAttribute('data-target');-->
-<!--    var options = document.getElementById(target);-->
-<!--    options.classList.toggle('active');-->
-<!--  }-->
-
-
-<!--  function init() {-->
-<!--    for (i = 0; i < more.length; i++) {-->
-<!--      more[i].addEventListener('click', show, false);-->
-<!--    }-->
-<!--  }-->
-
-<!--  return {-->
-<!--    init: init-->
-<!--  }-->
-<!--}());-->
-
-<!--createOptions.create();-->
-<!--showOptions.init();-->
-<!--</script>-->
+      .on('dragend', function (el) {
+        el.classList.remove('is-moving')
+        window.setTimeout(function () {
+          el.classList.add('is-moved')
+          window.setTimeout(function () {
+            el.classList.remove('is-moved')
+          }, 600)
+        }, 100)
+      })
+  })
+}
+</script>

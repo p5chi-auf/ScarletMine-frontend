@@ -4,17 +4,20 @@
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
           <b-card class="p-3 text-left">
-            <h2 class="mb-4 text-center">Add new user account</h2>
-            <b-form @submit.stop.prevent="createUser" :novalidate="true">
+            <h2 class="mb-4 text-center">Create account</h2>
+            <div class="text-center">
+            <a href="/login">or sign in to your account</a>
+            </div>
+            <b-form @submit.stop.prevent="register" :novalidate="true">
               <b-form-group id="input-group-1"
-                            label="Email:"
+                            label="Username:"
                             label-for="input-1"
               >
                 <b-form-input
                   id="input-1"
                   v-model="form.username"
                   type="text"
-                  placeholder="Enter email"
+                  placeholder="Enter username"
                   name="username"
                   v-validate="{ required: true, email: true }"
                   :state="validateState('username')"
@@ -31,7 +34,7 @@
                   id="input-2"
                   v-model="form.fullName"
                   name="full name"
-                  v-validate="{ required: true }"
+                  v-validate="{ required: true, min: 3 }"
                   :state="validateState('full name')"
                   aria-describedby="input-2-live-feedback"
                   placeholder="Enter name"
@@ -54,28 +57,15 @@
                     <li v-for="error in errors.collect('password')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
-                <b-form-text id="password-help-block"></b-form-text>
+                <b-form-text id="password-help-block"></b-form-text> &nbsp;
               </b-form-group>
-              <b-form-group id="input-group-4" label="Select role:" label-for="input-4">
-              <div>
-                <multiselect
-                  v-model="form.roles"
-                  :options="userRoles"
-                  :multiple="true"
-                  label="text"
-                  track-by="value"
-                  :close-on-select="true">
-                </multiselect>
-              </div>
-              </b-form-group>
-
               <div class="alert-danger" v-if="apiErrors.length">
                 <div v-for="error in apiErrors" :key="error">
                   {{ error }}
                 </div>
               </div>
               <div class="text-center">
-                <b-button type="submit" variant="primary" :disabled="errors.any()">Save</b-button>&nbsp;
+                <b-button type="submit" variant="primary" :disabled="errors.any()">Register</b-button>&nbsp;
               </div>
             </b-form>
           </b-card>
@@ -86,34 +76,25 @@
 </template>
 
 <script>
-import Multiselect from 'vue-multiselect'
 import UserService from '../../services/UserService'
 let userService = new UserService()
 
 export default {
-  components: { Multiselect },
   data () {
     return {
-      selected: [],
       form: {
         username: '',
-        fullName: '',
-        newPassword: '',
-        roles: []
+        name: '',
+        newPassword: ''
       },
       apiErrors: []
     }
   },
-  computed: {
-    userRoles () {
-      return userService.getAllRoles()
-    }
-  },
   methods: {
-    createUser () {
-      userService.createUser(this.form)
-        .then(() => {
-          location.href = '/users'
+    register () {
+      userService.register(this.form)
+        .then((response) => {
+          location.href = '/login'
         })
         .catch((error) => {
           console.log(error.message)

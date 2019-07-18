@@ -1,21 +1,18 @@
 .board {
-  $ease-out: all .3s cubic-bezier(0.23, 1, 0.32, 1);
-  $on-hold: white;
-  $in-progress: white;
-  $needs-review: white;
-  $approved: white;
 
-  * {
-    box-sizing: border-box;
+  html {
+    font-size: 62.5%;
   }
 
-  body {
-    background: #33363D;
-    color: white;
-    font-weight: 300;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
+  //
+  //body {
+  //  background: #F0F3F7;
+  //  font-weight: 300;
+  //  margin: 0;
+  //  padding: 5rem;
+  //  font-size: 1.5rem;
+  //  font-family: 'Roboto', sans-serif;
+  //}
 
   ul {
     list-style-type: none;
@@ -23,134 +20,168 @@
     padding: 0;
   }
 
-  .drag-container {
-    max-width: 1000px;
+  .task-container {
+    max-width: 1200px;
     margin: 20px auto;
-  }
 
-  .drag-list {
-    display: flex;
-    align-items: flex-start;
+    .task-list {
+      display: flex;
+      align-items: flex-start;
+      @media (max-width: 750px) {
+        display: block;
+      }
 
-    @media (max-width: 690px) {
-      display: block;
-    }
-  }
+      .task-column {
+        flex: 1;
+        margin: 0 10px;
+        position: relative;
+        overflow: hidden;
+        @media (max-width: 750px) {
+          margin-bottom: 30px;
+        }
 
-  .drag-column {
-    flex: 1;
-    margin: 0 10px;
-    position: relative;
-    background: rgba(black, 0.2);
-    overflow: hidden;
+        .task-input {
+          padding: 0 0 1rem;
 
-    @media (max-width: 690px) {
-      margin-bottom: 30px;
-    }
+          input {
+            border: 1px solid #CFD9EA;
+            border-top: 0;
+            background: white;
+            border-radius: 0.2rem;
+            box-shadow: 0px 2px 5px rgba(#CFD9EA, 0.1);
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.3rem;
+            font-weight: 300;
+            outline: none;
+            font-family: 'Roboto', sans-serif;
+            transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
 
-    h2 {
-      font-size: 0.8rem;
-      margin: 0;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
+            &:focus {
+              box-shadow: 0px 4px 10px rgba(#CFD9EA, 0.5);
+            }
+          }
+        }
 
-    &-on-hold {
-      .drag-column-header,
-      .is-moved,
-      .drag-options {
-        background: $on-hold;
+        .task-column-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1.5rem;
+
+          h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0;
+            text-transform: uppercase;
+          }
+        }
+
+        &-on-hold {
+          .task-column-header,
+          .is-moved,
+          .task-options {
+            background: #4B9EFD;
+            color: white;
+          }
+        }
+
+        &-in-progress {
+          .task-column-header,
+          .is-moved,
+          .task-options {
+            background: #FFB335;
+            color: white;
+          }
+        }
+
+        &-needs-review {
+          .task-column-header,
+          .is-moved,
+          .task-options {
+            background: #8473E1;
+            color: white;
+          }
+        }
+
+        &-approved {
+          .task-column-header,
+          .is-moved,
+          .task-options {
+            background: #44D26F;
+            color: white;
+          }
+        }
       }
     }
-
-    &-in-progress {
-      .drag-column-header,
-      .is-moved,
-      .drag-options {
-        background: $in-progress;
-      }
-    }
-
-    &-needs-review {
-      .drag-column-header,
-      .is-moved,
-      .drag-options {
-        background: $needs-review;
-      }
-    }
-
-    &-approved {
-      .drag-column-header,
-      .is-moved,
-      .drag-options {
-        background: $approved;
-      }
-    }
   }
 
-  .drag-column-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-  }
-
-  .drag-inner-list {
+  .task-inner-list {
     min-height: 50px;
   }
 
-  .drag-item {
-    margin: 10px;
-    height: 100px;
-    background: rgba(black, 0.5);
-    transition: $ease-out;
+  .task-item {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    height: 120px;
+    background: white;
+    border-radius: 0.2rem;
+    border: 1px solid #CFD9EA;
+    box-shadow: 0px 2px 5px rgba(#CFD9EA, 0.1);
+    transition: all .3s cubic-bezier(0.23, 1, 0.32, 1);
 
-    &.is-moving {
-      transform: scale(1.5);
-      background: rgba(black, 0.8);
+    h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 400;
+      padding-right: 2rem;
     }
 
-  }
-
-  .drag-header-more {
-    cursor: pointer;
-  }
-
-  .drag-options {
-    position: absolute;
-    top: 44px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    transform: translateX(100%);
-    opacity: 0;
-    transition: $ease-out;
-
-    &.active {
-      transform: translateX(0);
-      opacity: 1;
+    span.task-time {
+      font-size: 1.3rem;
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #566578;
     }
 
-    &-label {
+    .assigned {
       display: block;
-      margin: 0 0 5px 0;
+      margin-top: 1rem;
 
-      input {
+      li {
+        display: inline-block;
+        margin-right: 0.5rem;
+
+        img {
+          max-width: 20px;
+          border-radius: 100%;
+        }
+      }
+    }
+
+    .track-task {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      padding: 0;
+      margin: 0;
+      border: none;
+      outline: none;
+
+      &:hover {
         opacity: 0.6;
       }
+    }
 
-      span {
-        display: inline-block;
-        font-size: 0.9rem;
-        font-weight: 400;
-        margin-left: 5px;
-      }
+    &.is-moving {
+      cursor: move;
     }
   }
 
-  /* Dragula CSS  */
 
+  /* Dragula CSS  */
   .gu-mirror {
     position: fixed !important;
     margin: 0 !important;
@@ -171,27 +202,6 @@
   }
 
   .gu-transit {
-    opacity: 0.2;
-  }
-
-  /* Demo info */
-
-  .section {
-    padding: 20px;
-    text-align: center;
-
-    a {
-      color: white;
-      text-decoration: none;
-      font-weight: 300;
-    }
-
-    h4 {
-      font-weight: 400;
-
-      a {
-        font-weight: 600;
-      }
-    }
+    opacity: 0.5;
   }
 }

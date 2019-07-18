@@ -67,6 +67,8 @@ export default class UserService {
 
     user.projectRoles = []
 
+    // if (!user.newPassword)
+
     return user
   }
 
@@ -79,6 +81,8 @@ export default class UserService {
 
     user.roles = transformedRoles
 
+    delete user.newPassword
+
     return user
   }
 
@@ -87,6 +91,22 @@ export default class UserService {
       .then((users) => {
         let foundUser = users.find((user) => {
           return userId === user.id
+        })
+
+        return new Promise((resolve, reject) => {
+          return resolve(foundUser)
+        })
+      }).catch(error => {
+        console.log(error)
+        return []
+      })
+  }
+
+  findByUsername (username) {
+    return this.getAll()
+      .then((users) => {
+        let foundUser = users.find((user) => {
+          return username === user.username
         })
 
         return new Promise((resolve, reject) => {

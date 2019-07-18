@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+<!--    <p v-if="loading">Loading...</p>-->
     <b-container>
       <b-row align-h="center" class="mt-5">
         <b-col cols="12" md="6">
@@ -10,12 +11,12 @@
             </div>
             <b-form @submit.prevent="login" :novalidate="true">
               <b-form-group align="left" id="exampleInputGroup1"
-                            label="Username:"
+                            label="Email:"
                             label-for="exampleInput1">
                 <b-form-input id="exampleInput"
                               type="text"
                               v-model="form.username"
-                              placeholder="Enter username"
+                              placeholder="Enter email"
                               name="username"
                               v-validate="{ required: true }"
                               :state="validateState('username')">

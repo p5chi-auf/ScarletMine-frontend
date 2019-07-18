@@ -1,8 +1,16 @@
   .home-buttons-wrapper {
-    margin-top: 600px;
-    margin-left: 190px;
+    margin-top: 500px;
+    margin-left: 30px;
+
+    @include media-breakpoint-up(md) {
+      margin-left: 190px;
+    }
 
     .btn:not(:first-child) {
-      margin-left: 30px;
+      margin-left: 5px;
+
+      @include media-breakpoint-up(md) {
+        margin-left: 30px;
+      }
     }
   }
