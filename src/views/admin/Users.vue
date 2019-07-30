@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <h2>USER LIST</h2>
+    <h2>USER LIST</h2><hr>
   <b-container fluid class="custom-container">
 
     <b-row class="filter-page">

@@ -1,12 +1,11 @@
 <template>
 <div class="profile">
   <div class="avatar-wrapper">
-    <div class="avatar">
-      <b-card
-        img-top
-        tag="article"
-      >
-        <b-card-img src="https://picsum.photos/id/275/600/400" class="rounded-0"></b-card-img>
+    <div class="card-avatar">
+      <b-card>
+        <avatar
+          :fullname="user.fullName"
+          :size="116"></avatar>
         <b-card-title>{{ user.fullName }}</b-card-title>
         <b-card-text>
           <p class="mt-3 mb-0">{{ text }}</p>
@@ -174,6 +173,7 @@
 </template>
 
 <script>
+import Avatar from 'vue-avatar-component'
 // import apiService from '../../services/ApiService'
 import UserService from '../../services/UserService'
 import AuthService from '../../services/AuthService'
@@ -193,6 +193,7 @@ export default {
   mounted () {
     this.getUser()
   },
+  components: { Avatar },
   methods: {
     userProvider () {
       return userService.getAll()
@@ -225,7 +226,7 @@ export default {
           })
         })
         .catch(() => {
-          this.$bvToast.toast(`Something went wrong`, {
+          this.$bvToast.toast(`Oops!..Something went wrong`, {
             title: 'Error',
             autoHideDelay: 5000,
             variant: 'danger',

@@ -49,7 +49,7 @@ const router = new Router({
     {
       path: '/users',
       name: 'users',
-      component: () => import(/* webpackChunkName: "about" */ './views/admin/Users.vue'),
+      component: () => import(/* webpackChunkName: "users" */ './views/admin/Users.vue'),
       meta: {
         authorize: [],
         requiresAuth: true
@@ -58,7 +58,7 @@ const router = new Router({
     {
       path: '/users/add',
       name: 'users-add',
-      component: () => import(/* webpackChunkName: "about" */ './views/admin/UserAdd.vue'),
+      component: () => import(/* webpackChunkName: "users-add" */ './views/admin/UserAdd.vue'),
       meta: {
         requiresAuth: true
       }
@@ -66,7 +66,7 @@ const router = new Router({
     {
       path: '/users/edit/:userId',
       name: 'users-edit',
-      component: () => import(/* webpackChunkName: "about" */ './views/admin/UserEdit.vue'),
+      component: () => import(/* webpackChunkName: "users-edit" */ './views/admin/UserEdit.vue'),
       meta: {
         requiresAuth: true
       }
@@ -74,7 +74,7 @@ const router = new Router({
     {
       path: '/boards',
       name: 'boards',
-      component: () => import(/* webpackChunkName: "about" */ './components/Boards.vue'),
+      component: () => import(/* webpackChunkName: "boards" */ './components/Boards.vue'),
       meta: {
         requiresAuth: true
       }
@@ -90,12 +90,12 @@ const router = new Router({
     {
       path: '/projects/add',
       name: 'project-add',
-      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectAdd.vue')
+      component: () => import(/* webpackChunkName: "project-add" */ './views/projects/ProjectAdd.vue')
     },
     {
       path: '/projects/edit/:projectId',
       name: 'projects-edit',
-      component: () => import(/* webpackChunkName: "about" */ './views/projects/ProjectEdit.vue'),
+      component: () => import(/* webpackChunkName: "projects-edit" */ './views/projects/ProjectEdit.vue'),
       meta: {
         requiresAuth: true
       }
@@ -103,7 +103,7 @@ const router = new Router({
     {
       path: '/projects/tasks/',
       name: 'tasks',
-      component: () => import(/* webpackChunkName: "about" */ './views/projects/TaskList.vue'),
+      component: () => import(/* webpackChunkName: "tasks" */ './views/projects/TaskList.vue'),
       meta: {
         requiresAuth: true
       }
@@ -111,7 +111,7 @@ const router = new Router({
     {
       path: '/projects/tasks/task',
       name: 'task',
-      component: () => import(/* webpackChunkName: "about" */ './views/projects/TaskCard.vue'),
+      component: () => import(/* webpackChunkName: "task" */ './views/projects/TaskCard.vue'),
       meta: {
         requiresAuth: true
       }

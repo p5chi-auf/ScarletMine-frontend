@@ -21,11 +21,15 @@
     line-height: 30px;
   }
 
-  .avatar {
-    max-width: 20rem;
+  .card-avatar {
+    max-width: 19rem;
     text-align: center;
     margin: auto;
     padding: 30px 0;
+
+    .avatar {
+      color: $gray-500;
+    }
   }
 
   .b-toast {

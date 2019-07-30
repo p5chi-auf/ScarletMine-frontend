@@ -56,7 +56,7 @@
         <div class="nav-links-wrapper ml-md-auto">
           <b-collapse id="nav-collapse" class="custom-toggle" is-nav>
               <b-navbar-nav>
-                <b-nav-item href="/">HOME</b-nav-item>
+<!--                <b-nav-item href="/">HOME</b-nav-item>-->
                 <b-nav-item href="/about">ABOUT</b-nav-item>
                 <b-nav-item href="/login">LOGIN</b-nav-item>
                 <li class="nav-item"><b-button size="sm" class="btn btn-primary" href="/register">REGISTER</b-button></li>

@@ -117,6 +117,12 @@ export default {
     createUser () {
       userService.register(this.form)
         .then(() => {
+          this.$bvToast.toast(`Your account was created`, {
+            title: 'Success',
+            autoHideDelay: 5000,
+            variant: 'success',
+            appendToast: true
+          })
           location.href = '/users'
         })
         .catch((error) => {

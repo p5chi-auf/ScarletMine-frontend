@@ -61,15 +61,16 @@ export default class UserService {
   }
 
   transformForApi (user) {
-    user.roles = user.roles.map(role => {
+    let transformedUser = { ...user }
+    transformedUser.roles = transformedUser.roles.map(role => {
       return role.value
     })
 
-    user.projectRoles = []
+    transformedUser.projectRoles = []
 
     // if (!user.newPassword)
 
-    return user
+    return transformedUser
   }
 
   transformForFront (user) {
