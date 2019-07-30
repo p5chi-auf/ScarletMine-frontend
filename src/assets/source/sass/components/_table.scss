@@ -38,16 +38,12 @@ table {
 
 .list {
   min-height: calc(100vh - #{$navbar-height});
-  //background-image: url('~/img/boards.jpg');
-  //background-size: 100% auto;
-  //background-repeat: no-repeat;
 
   h2{
     padding-top: 15px;
     text-align: center;
     text-shadow: 0 0 5px transparentize($white, .3);
     letter-spacing: 3px;
-    //font-weight: bold;
   }
 
   hr {

@@ -44,20 +44,7 @@
                 </ul>
               </b-form-invalid-feedback>
             </b-form-group>
-<!--            <b-form-group id="input-group-2" label="Username:" label-for="input-2">-->
-<!--              <b-input-->
-<!--                name="username"-->
-<!--                type="text"-->
-<!--                id="input-2"-->
-<!--                v-validate="{ required: true }"-->
-<!--                :state="validateState('username')">-->
-<!--              </b-input>-->
-<!--              <b-form-invalid-feedback id="input-2-live-feedback">-->
-<!--                <ul>-->
-<!--                  <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>-->
-<!--                </ul>-->
-<!--              </b-form-invalid-feedback>-->
-<!--            </b-form-group>-->
+
             <b-form-group id="input-group-3" label="Email:" label-for="input-3">
               <b-input
                 v-model="user.username"

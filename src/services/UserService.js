@@ -68,8 +68,6 @@ export default class UserService {
 
     transformedUser.projectRoles = []
 
-    // if (!user.newPassword)
-
     return transformedUser
   }
 

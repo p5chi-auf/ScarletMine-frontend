@@ -29,23 +29,6 @@
         </div>
       </div>
     </b-navbar>
-<!--    <b-navbar v-if="!isLoggedIn" toggleable="lg" type="light" variant="light">-->
-<!--      <span id="logo" href="#"><b>SCARLET</b>MINE</span>-->
-
-<!--      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>-->
-<!--      <b-collapse id="nav-collapse" class="custom-toggle" is-nav>-->
-<!--      <b-navbar-nav class="nav-buttons">-->
-<!--        <div id="navigation">-->
-<!--          <a href="/">HOME</a>-->
-<!--          <a href="/about">ABOUT</a>-->
-<!--        </div>-->
-<!--        <div class="log">-->
-<!--          <a href="/login">LOGIN</a>-->
-<!--        </div>-->
-<!--        <b-button size="sm" class="btn btn-primary" href="/register">REGISTER</b-button>-->
-<!--      </b-navbar-nav>-->
-<!--      </b-collapse>-->
-<!--    </b-navbar>-->
 
     <b-navbar v-if="!isLoggedIn" toggleable=md type="light" variant="light">
       <div class="nav-wrapper custom-container">
@@ -56,7 +39,7 @@
         <div class="nav-links-wrapper ml-md-auto">
           <b-collapse id="nav-collapse" class="custom-toggle" is-nav>
               <b-navbar-nav>
-<!--                <b-nav-item href="/">HOME</b-nav-item>-->
+                <b-nav-item href="/">HOME</b-nav-item>
                 <b-nav-item href="/about">ABOUT</b-nav-item>
                 <b-nav-item href="/login">LOGIN</b-nav-item>
                 <li class="nav-item"><b-button size="sm" class="btn btn-primary" href="/register">REGISTER</b-button></li>
