@@ -1,10 +1,12 @@
 // Colors
 $gray-500: rgba(61, 61, 61, 0.87);
-$primary: $gray-500;
+$gray-600: #6b778c;
 
+$primary: $gray-500;
+$navbar-height: 80px;
 $btn-font-size: 15px;
 $btn-padding-x: 25px;
-$btn-padding-y: 10px;
+$btn-padding-y: 5px;
 $btn-border-width: 1px;
 
 $font-family-base: "Raleway", sans-serif;
@@ -12,5 +14,12 @@ $font-family-base: "Raleway", sans-serif;
 $headings-color: $gray-500;
 
 $navbar-light-toggler-border-color: $gray-500;
+$profile-header-bg-color: #dfe1e6;
 
+$task-border: #CFD9EA;
+$task-box-shadow: #CFD9EA;
+$task-input-font: 'Roboto', sans-serif;
+$task-header-color: $gray-500;
+$board-header-text-color: #f8f9fa;
 
+$task-card-bg-color: rgba(9, 30, 66, .04);

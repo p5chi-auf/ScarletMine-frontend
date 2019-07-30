@@ -1,8 +1,89 @@
+.banner {
+  width: 50%;
+  height: 60%;
+  top: 15%;
+  left: 10px;
+  position: absolute;
+
+    @include media-breakpoint-up(md) {
+      width: 60%;
+      height: 70%;
+      top: 25%;
+      left: 10px;
+      position: absolute;
+  }
+
   .home-buttons-wrapper {
-    margin-top: 600px;
-    margin-left: 190px;
+    margin-top: 400px;
+    margin-left: 30px;
+
+    @include media-breakpoint-up(md) {
+      margin-left: 190px;
+    }
 
     .btn:not(:first-child) {
-      margin-left: 30px;
+      margin-left: 5px;
+
+      @include media-breakpoint-up(md) {
+        margin-left: 30px;
+      }
     }
   }
+
+  .app-text {
+
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      float: left;
+      text-shadow: 0 0 5px transparentize($gray-500, .3);
+      letter-spacing: 1px;
+    }
+
+    h1{
+      color: $white;
+      font-size: 23px;
+      width: 390px;
+      position: relative;
+      margin-left: 30px;
+
+      @include media-breakpoint-up(md) {
+        color: $white;
+        font-size: 43px;
+        width: 590px;
+        position: relative;
+        margin-left: 190px;
+      }
+    }
+
+    p{
+      color: $white;
+      font-size: 15px;
+      width: 350px;
+      position: relative;
+      margin-left: 30px;
+
+      @include media-breakpoint-up(md) {
+        color: $white;
+        font-size: 20px;
+        width: 450px;
+        position: relative;
+        margin-left: 190px;
+      }
+    }
+  }
+
+  .app-picture {
+    width: 5%;
+    float: right;
+    margin-top: -750px;
+    padding-left: 50px;
+
+    @include media-breakpoint-up(md) {
+      width: 50%;
+      float: right;
+      margin-top: -450px;
+      padding-left: 450px;
+    }
+  }
+}
+

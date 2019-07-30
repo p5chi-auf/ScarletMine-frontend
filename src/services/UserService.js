@@ -61,13 +61,14 @@ export default class UserService {
   }
 
   transformForApi (user) {
-    user.roles = user.roles.map(role => {
+    let transformedUser = { ...user }
+    transformedUser.roles = transformedUser.roles.map(role => {
       return role.value
     })
 
-    user.projectRoles = []
+    transformedUser.projectRoles = []
 
-    return user
+    return transformedUser
   }
 
   transformForFront (user) {
@@ -79,6 +80,8 @@ export default class UserService {
 
     user.roles = transformedRoles
 
+    delete user.newPassword
+
     return user
   }
 
@@ -87,6 +90,22 @@ export default class UserService {
       .then((users) => {
         let foundUser = users.find((user) => {
           return userId === user.id
+        })
+
+        return new Promise((resolve, reject) => {
+          return resolve(foundUser)
+        })
+      }).catch(error => {
+        console.log(error)
+        return []
+      })
+  }
+
+  findByUsername (username) {
+    return this.getAll()
+      .then((users) => {
+        let foundUser = users.find((user) => {
+          return username === user.username
         })
 
         return new Promise((resolve, reject) => {

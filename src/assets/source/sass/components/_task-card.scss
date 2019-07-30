@@ -1,0 +1,153 @@
+.window-wrapper {
+
+  .close-window {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 32px;
+    padding: 4px;
+    margin: 4px;
+    width: 32px;
+    z-index: 2;
+  }
+
+  .title-wrapper {
+    overflow: hidden;
+
+    .window-title {
+      float: left;
+
+      i {
+        margin-right: 15px;
+        font-size: 17px;
+      }
+    }
+
+    .project-title {
+      margin-left: 5px;
+      padding-top: 3px;
+      float: left;
+
+      h5 {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .list-status {
+    margin-left: 34px;
+    color: $gray-600;
+    font-size: 14px;
+  }
+
+  .window-main-col {
+    float: left;
+    width: 500px;
+
+    .member-list {
+      padding-top: 15px;
+
+      p {
+        font-size: 14px;
+        margin-left: 34px;
+        color: $gray-600;
+      }
+
+      i {
+        margin-right: 15px;
+        font-size: 17px;
+      }
+
+      .avatar {
+        margin-left: 34px;
+        font-size: 14px !important;
+        color: black !important;
+        background-color: $gray-500 !important;
+      }
+    }
+  }
+
+  .card-description {
+    padding-top: 20px;
+
+    i {
+      margin-right: 15px;
+      font-size: 17px;
+    }
+
+    .edit-controls {
+      margin-left: 34px;
+      line-height: 40px;
+
+      .close-button i{
+        position: absolute;
+        margin-top: 4px;
+        margin-left: 10px;
+        font-size: 34px;
+        -webkit-text-stroke: 3px $white;
+      }
+    }
+
+    .textarea-field-description {
+      background-color: $task-card-bg-color;
+      border: none;
+      box-shadow: none;
+      border-radius: 3px;
+      resize: none;
+      width: 400px;
+      padding: 8px 12px;
+      margin-left: 34px;
+      margin-top: 10px;
+
+      a {
+        color: $gray-500;
+      }
+    }
+  }
+
+  .window-sidebar {
+    float: right;
+    padding: 20px 16px 4px 8px;
+    width: 168px;
+    overflow: hidden;
+    z-index: 10;
+
+    h5 {
+      color: $gray-500;
+      font-size: 15px;
+    }
+
+    .sidebar-list {
+      margin-bottom: 55px;
+
+      i {
+        margin-right: 15px;
+      }
+
+      .button-link {
+        font-size: 15px;
+        background-color: $task-card-bg-color;
+        box-shadow: none;
+        border: none;
+        border-radius: 3px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: block;
+        height: 32px;
+        margin-top: 8px;
+        max-width: 300px;
+        overflow: hidden;
+        padding: 6px 12px;
+        position: relative;
+        text-decoration: none;
+        user-select: none;
+      }
+    }
+
+    .time-creation p {
+      margin-bottom: 0;
+      font-size: 13px;
+      color: $gray-500;
+    }
+  }
+}

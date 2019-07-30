@@ -1,9 +1,10 @@
-
 <template>
+  <div class="list">
+  <h2>PROJECT LIST</h2><hr>
   <b-container fluid class="custom-container">
 
-    <div class="list-of-projects">
-      <b-button squared href="/projects/add"><i class="fas fa-plus"></i>Add project</b-button>
+    <div class="add-button">
+      <a class="btn btn-primary" href="/projects/add"><i class="fas fa-plus"></i>Add project</a>
     </div>
 
     <b-table
@@ -21,15 +22,16 @@
 
       <template slot="actions" slot-scope="row">
         <div class="table-actions">
-          <span class="action"><i class="far fa-eye"></i></span>
-          <router-link :to="{ name: 'projects-edit', params: { projectId: row.item.id }}"><i class="fas fa-pen"></i></router-link>
-          <span class="action text-danger" v-b-modal="`modal-${row.index}`"><i class="fas fa-trash-alt"></i></span>
+          <router-link v-b-tooltip.hover.top="'Tasks'" :to="{ name: 'tasks'}" class="action"><i class="fas fa-arrow-up"></i></router-link>
+          <router-link v-b-tooltip.hover.top="'Edit'" :to="{ name: 'projects-edit', params: { projectId: row.item.id }}"><i class="fas fa-pen"></i></router-link>
+          <span v-b-tooltip.hover.top="'Delete'" class="text-danger" v-b-modal="`modal-${row.index}`"><i class="fas fa-trash-alt"></i></span>
           <b-modal :id="`modal-${row.index}`" @ok="removeElement(row.item.id)"> Do you want delete this project? </b-modal>
         </div>
 
       </template>
     </b-table>
   </b-container>
+  </div>
 </template>
 
 <script>

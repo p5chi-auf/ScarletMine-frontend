@@ -4,7 +4,11 @@ html, body {
 
 body {
   background-color: #EEF1F4;
-  background-image: url('~/img/background.jpg');
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('~/img/background.png');
   background-size: 100% auto;
   background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.app-wrapper {
+  min-height: 100vh;
 }

@@ -1,8 +1,9 @@
 <template>
-  <div id="users">
+  <div class="list">
+    <h2>USER LIST</h2><hr>
   <b-container fluid class="custom-container">
 
-    <b-row>
+    <b-row class="filter-page">
       <b-col md="6" class="my-1">
         <b-form-group label-cols-sm="3" label="Filter" class="mb-0">
           <b-input-group>
@@ -34,7 +35,7 @@
       </b-col>
     </b-row>
 
-    <div class="list-of-accounts">
+    <div class="add-button">
       <a class="btn btn-primary" href="/users/add"><i class="fas fa-plus"></i>Add user</a>
     </div>
 
@@ -102,16 +103,11 @@ const userService = new UserService()
 export default {
   data () {
     return {
-      items: [
-        { key: 'fullName', label: 'Full name' },
-        { key: 'username', label: 'Username', sortable: true, class: 'text-center' },
-        { key: 'isActive', label: 'is Active' },
-        { key: 'actions', label: 'Actions' }
-      ],
+      items: [],
       fields: [
         { key: 'id', label: 'ID', class: 'text-center' },
         { key: 'fullName', label: 'Full name', sortable: true, sortDirection: 'desc' },
-        { key: 'username', label: 'Username', sortable: true, class: 'text-center' },
+        { key: 'username', label: 'Email', sortable: true, class: 'text-center' },
         { key: 'roles', label: 'Role' },
         { key: 'actions', label: 'Actions', class: 'text-center' }
       ],
@@ -127,7 +123,7 @@ export default {
   computed: {
     sortOptions () {
       // Create an options list from our fields
-      return this.items
+      return this.fields
         .filter(f => f.sortable)
         .map(f => {
           return { text: f.label, value: f.key }
@@ -136,7 +132,7 @@ export default {
   },
   mounted () {
     // Set the initial number of items
-    this.totalRows = this.fields.length
+    this.totalRows = this.items.length
   },
   methods: {
     userProvider () {
@@ -146,9 +142,9 @@ export default {
           return []
         })
     },
-    onFiltered (filteredFields) {
+    onFiltered (filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
-      this.totalRows = filteredFields.length
+      this.totalRows = filteredItems.length
       this.currentPage = 1
     }
   }
