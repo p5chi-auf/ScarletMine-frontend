@@ -36,7 +36,8 @@
       </b-row>
 
       <div class="add-button">
-        <a class="btn btn-primary" href="/projects/tasks/add"><i class="fas fa-plus"></i>Add task</a>
+        <a class="btn btn-primary" href="/projects/:projectId/tasks/add"><i class="fas fa-plus"></i>Add task</a>
+<!--        <router-link :to="{ name: 'projects-add', params: { projectId: row.item.id }}"><i class="fas fa-plus"></i>Add Task</router-link>-->
       </div>
 
       <b-table

@@ -17,14 +17,20 @@
     .window-title {
       float: left;
 
+        input {
+          border-radius: 0;
+          margin-left: 34px;
+      }
+
       i {
+        color: $gray-500;
         margin-right: 15px;
         font-size: 17px;
       }
     }
 
     .project-title {
-      margin-left: 5px;
+      margin-left: 50px;
       padding-top: 3px;
       float: left;
 

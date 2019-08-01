@@ -22,7 +22,7 @@
 
       <template slot="actions" slot-scope="row">
         <div class="table-actions">
-          <router-link v-b-tooltip.hover.top="'Tasks'" :to="{ name: 'tasks'}" class="action"><i class="fas fa-arrow-up"></i></router-link>
+          <router-link v-b-tooltip.hover.top="'Tasks'" :to="{ name: 'tasks', params: { projectId: row.item.id }}" class="action"><i class="fas fa-arrow-up"></i></router-link>
           <router-link v-b-tooltip.hover.top="'Edit'" :to="{ name: 'projects-edit', params: { projectId: row.item.id }}"><i class="fas fa-pen"></i></router-link>
           <span v-b-tooltip.hover.top="'Delete'" class="text-danger" v-b-modal="`modal-${row.index}`"><i class="fas fa-trash-alt"></i></span>
           <b-modal :id="`modal-${row.index}`" @ok="removeElement(row.item.id)"> Do you want delete this project? </b-modal>

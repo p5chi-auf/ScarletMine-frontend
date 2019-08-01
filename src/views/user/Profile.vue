@@ -17,8 +17,9 @@
     <b-tabs content-class="pt-3 tab-content-container" align="center">
       <b-tab title="General" active>
         <div class="profile-info">
+          <b>Email:</b>  {{ user.email }} <br>
           <b>Full Name:</b> {{ user.fullName }} <br>
-          <b>Email:</b>  {{ user.username }} <br>
+          <b>Username:</b> {{ user.username }} <br>
           <b>Role:</b> <span class="badge badge-secondary user-role" v-for="role in user.roles " @key="role">{{ role.text }}</span>
 
         </div>
@@ -45,9 +46,26 @@
               </b-form-invalid-feedback>
             </b-form-group>
 
+            <b-form-group id="input-group-11" label="Username:" label-for="input-11">
+              <b-input
+                name="username"
+                v-model="user.username"
+                type="text"
+                id="input-11"
+                v-validate="{ required: true }"
+                :state="validateState('username')">
+              </b-input>
+              <b-form-invalid-feedback id="input-11-live-feedback">
+                <ul>
+                  <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
+                </ul>
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+
             <b-form-group id="input-group-3" label="Email:" label-for="input-3">
               <b-input
-                v-model="user.username"
+                v-model="user.email"
                 name="email"
                 type="email"
                 id="input-3"
