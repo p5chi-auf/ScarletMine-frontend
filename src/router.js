@@ -101,7 +101,7 @@ const router = new Router({
       }
     },
     {
-      path: '/projects/tasks/',
+      path: '/projects/:projectId/tasks/',
       name: 'tasks',
       component: () => import(/* webpackChunkName: "tasks" */ './views/projects/TaskList.vue'),
       meta: {
@@ -109,8 +109,9 @@ const router = new Router({
       }
     },
     {
-      path: '/projects/tasks/task',
-      name: 'task',
+      // path: '/projects/tasks/task',
+      path: '/projects/:projectId/tasks/add',
+      name: 'task-add',
       component: () => import(/* webpackChunkName: "task" */ './views/projects/TaskCard.vue'),
       meta: {
         requiresAuth: true

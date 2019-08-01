@@ -7,7 +7,7 @@
             <h2>Backlog</h2>
           </span>
           <div class="task-input">
-            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('tasks')" v-model="create.tasks">
+            <input type="text" placeholder="Add another card" @keyup.enter="addIssue('tasks')" v-model="create.tasks">
           </div>
           <ul class="task-inner-list" id="tasks">
             <li v-for="item in tasks" class="task-item">
@@ -25,7 +25,7 @@
           <h2>In Progress</h2>
         </span>
           <div class="task-input">
-            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('inprogress')" v-model="create.inprogress">
+            <input type="text" placeholder="Add another card" @keyup.enter="addIssue('inprogress')" v-model="create.inprogress">
           </div>
           <ul class="task-inner-list" id="inprogress">
             <li v-for="item in inprogress" class="task-item">
@@ -43,7 +43,7 @@
           <h2>Needs Review</h2>
         </span>
           <div class="task-input">
-            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('review')" v-model="create.review">
+            <input type="text" placeholder="Add another card" @keyup.enter="addIssue('review')" v-model="create.review">
           </div>
           <ul class="task-inner-list" id="review">
             <li v-for="item in review" class="task-item">
@@ -61,7 +61,7 @@
             <h2>Approved</h2>
           </span>
           <div class="task-input">
-            <input type="text" placeholder="Add an issue" @keyup.enter="addIssue('approved')" v-model="create.approved">
+            <input type="text" placeholder="Add another card" @keyup.enter="addIssue('approved')" v-model="create.approved">
           </div>
           <ul class="task-inner-list" id="approved">
             <li v-for="item in approved" class="task-item">

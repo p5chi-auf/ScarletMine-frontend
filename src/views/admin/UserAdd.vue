@@ -12,16 +12,16 @@
               >
                 <b-form-input
                   id="input-1"
-                  v-model="form.username"
+                  v-model="form.email"
                   type="text"
                   placeholder="Enter email"
-                  name="username"
+                  name="email"
                   v-validate="{ required: true, email: true }"
-                  :state="validateState('username')"
+                  :state="validateState('email')"
                 ></b-form-input>
                 <b-form-invalid-feedback id="input-1-live-feedback">
                   <ul>
-                    <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
+                    <li v-for="error in errors.collect('email')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -39,6 +39,26 @@
                 <b-form-invalid-feedback id="input-2-live-feedback">
                   <ul>
                     <li v-for="error in errors.collect('full name')" :key="error">{{ error }}</li>
+                  </ul>
+                </b-form-invalid-feedback>
+              </b-form-group>
+
+              <b-form-group id="input-group-11"
+                            label="Username:"
+                            label-for="input-11"
+              >
+                <b-form-input
+                  id="input-11"
+                  v-model="form.username"
+                  type="text"
+                  placeholder="Enter username"
+                  name="username"
+                  v-validate="{ required: true }"
+                  :state="validateState('username')"
+                ></b-form-input>
+                <b-form-invalid-feedback id="input-11-live-feedback">
+                  <ul>
+                    <li v-for="error in errors.collect('username')" :key="error">{{ error }}</li>
                   </ul>
                 </b-form-invalid-feedback>
               </b-form-group>
@@ -96,6 +116,7 @@ export default {
     return {
       selected: [],
       form: {
+        email: '',
         username: '',
         fullName: '',
         newPassword: '',

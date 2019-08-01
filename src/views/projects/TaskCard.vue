@@ -7,14 +7,14 @@
             <a class="close-window" href="/projects/tasks"><i class="fas fa-times"></i></a>
             <div class="title-wrapper">
               <div class="window-title">
-                <h5 ><i class="far fa-credit-card"></i><b>Task-Title</b></h5>
+                  <i class="far fa-credit-card"></i><b-form-input v-model="task.title"></b-form-input>
               </div>
               <div class="project-title">
-                <h5>(Project name)</h5>
+                <h5>({{ task.project }})</h5>
               </div>
             </div>
             <div class="list-status">
-              <p>status:</p>
+              <p>status: {{ task.status }}</p>
             </div>
             <div class="window-main-col">
               <div class="member-list">
@@ -23,12 +23,12 @@
                 <div>
                   <avatar
                     fullname="M B"
-                    size="34"></avatar>
+                    :size="34"></avatar>
                 </div>
               </div>
               <div class="card-description">
                 <h5><i class="fas fa-stream"></i><b>Description</b></h5>
-                <textarea class="textarea-field-description" placeholder="Add a more detailed description…"></textarea>
+                <textarea class="textarea-field-description" placeholder="Add a more detailed description…" v-model="task.description"></textarea>
                 <div class="edit-controls">
                   <b-button type="submit" variant="primary" :disabled="errors.any()">Save</b-button>&nbsp;
                   <a class="close-button" href="#"><i class="fas fa-times"></i></a>
@@ -44,11 +44,11 @@
                   <template slot="title">Members</template>
                   <b-form-group id="user-list-input" label-for="input-users">
                       <multiselect
-                        v-model="form.fullName"
+                        v-model="task.users"
                         :options="userList"
                         :multiple="true"
-                        label="text"
-                        track-by="value"
+                        label="fullName"
+                        track-by="id"
                         :close-on-select="true">
                       </multiselect>
                   </b-form-group>
@@ -81,15 +81,25 @@ export default {
       selected: [],
       userList: [],
       fields: [],
-      form: {
-        fullName: []
+      task: {
+        title: '',
+        description: '',
+        status: null,
+        project: null,
+        users: []
       }
     }
   },
-  computed: {
-    userList () {
-      return userService.getAll()
+  methods: {
+    save () {
+      // taskService.create(this.task)
     }
+  },
+  mounted () {
+    // this.task.project =
+    userService.getAll().then(users => {
+      this.userList = users
+    })
   }
 }
 </script>
